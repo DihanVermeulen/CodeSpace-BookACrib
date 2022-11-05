@@ -12,7 +12,9 @@ export const Home = () => {
                     <img className="home-page--main-header--logo" src={logo}></img>
             </header>
             <nav className="home-page--vertical-navigation">
-                Logout
+                <ul>
+                    <li>Logout</li>
+                </ul>
             </nav>
             <main className="home-page--main-section">
             </main>
