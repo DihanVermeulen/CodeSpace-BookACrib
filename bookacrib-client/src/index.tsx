@@ -9,15 +9,27 @@ import {
 } from "react-router-dom";
 import { Home } from './routes/Home';
 import { Login } from './routes/Login';
+import { CompareHotels } from './components/CompareHotels/CompareHotels';
+import { Hotels } from './components/Hotels/Hotels';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Home />,
+    children: [
+      {
+        path: "hotels",
+        element: <Hotels />
+      },
+      {
+        path: 'compare-hotels',
+        element: <CompareHotels />
+      }
+    ]
   },
   {
     path: "login",
-    element: <Login/>
+    element: <Login />
   }
 ]);
 
