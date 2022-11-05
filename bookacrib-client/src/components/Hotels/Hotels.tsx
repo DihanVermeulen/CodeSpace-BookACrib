@@ -1,5 +1,5 @@
 export const Hotels = () => {
     return (
-        <section></section>
+        <section>Hotels</section>
     )
 }
