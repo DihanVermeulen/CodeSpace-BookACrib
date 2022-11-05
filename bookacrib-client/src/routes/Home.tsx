@@ -1,10 +1,14 @@
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import '../styles.css';
 import logo from '../assets/images/logo.png';
+import { useEffect, useState } from "react";
 
 export const Home = () => {
+    const navigate = useNavigate();
 
-    const navigate = useNavigate()
+    useEffect(() => {
+        navigate('hotels');
+    }, []);
 
     return (
         <div id="home-page">
@@ -17,6 +21,7 @@ export const Home = () => {
                 </ul>
             </nav>
             <main className="home-page--main-section">
+                <Outlet />
             </main>
             <footer className="home-page--footer">
                 All Rights Reserved
