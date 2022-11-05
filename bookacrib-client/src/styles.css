@@ -25,6 +25,12 @@
     justify-content: center;
 }
 
+.home-page--vertical-navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 .home-page--main-section {
     min-height: 80vh;
     background-image: url(assets/images/background_mobile.png);
