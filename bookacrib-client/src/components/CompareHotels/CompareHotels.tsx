@@ -1,5 +1,5 @@
 export const CompareHotels = () => {
     return (
-        <section></section>
+        <section>Compare Hotels</section>
     )
 }
