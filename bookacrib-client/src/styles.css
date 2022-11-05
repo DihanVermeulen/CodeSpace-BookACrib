@@ -2,3 +2,33 @@
     --primary-bg-colour: #262626;
     --secondary-bg-colour: #515151;
 }
+
+* {
+    color: #fff;
+}
+
+.home-page--main-header {
+    background-color: var(--primary-bg-colour);
+    display: flex;
+    justify-content: center;
+}
+
+.home-page--main-header--logo {
+    margin: 2rem;
+    width: 20rem;
+}
+
+.home-page--vertical-navigation {
+    background-color: var(--secondary-bg-colour);
+    display: flex;
+    justify-content: center;
+}
+
+.home-page--main-section {
+    min-height: 80vh;
+}
+
+.home-page--footer {
+    background-color: var(--primary-bg-colour);
+    min-height: 10vh;
+}
