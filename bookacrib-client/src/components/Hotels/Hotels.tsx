@@ -1,5 +1,7 @@
 export const Hotels = () => {
     return (
-        <section>Hotels</section>
+        <section className="home-page--main-section--card">
+            Hotels
+        </section>
     )
 }
