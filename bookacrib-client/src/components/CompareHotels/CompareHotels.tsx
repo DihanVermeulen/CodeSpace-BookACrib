@@ -1,5 +1,7 @@
 export const CompareHotels = () => {
     return (
-        <section>Compare Hotels</section>
+        <section className="home-page--main-section--card">
+            Compare Hotels
+        </section>
     )
 }
