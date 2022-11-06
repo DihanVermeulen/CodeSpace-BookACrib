@@ -37,9 +37,17 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .home-page--footer {
     background-color: var(--primary-bg-colour);
     min-height: 10vh;
+}
+
+.home-page--main-section--card {
+    
 }
