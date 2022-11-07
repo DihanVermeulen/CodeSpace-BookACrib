@@ -12,17 +12,17 @@ export const Hotels = () => {
 
     if (hotels) {
         return (
-            <section className="home-page--main-section--card">
+            <section className="main-section--card">
                 <h3>Compare hotels and book your stay</h3>
-                <div>
-                    {hotels.map((hotel, key) => {
-                        return (
-                        <div key={key} className='home-page--main-section--card--hotel-card'>
-                            <div>{hotel.hotel_name}</div>                          
-                            <div>{hotel.rating}</div>                          
+                {hotels.map((hotel, key) => {
+                    return (
+                        <div key={key} className='main-section--card--hotel-card'>
+                            <img src={hotel.image} alt="hotel"></img>
+                            <div>{hotel.hotel_name}</div>
+                            <div>{hotel.rating}</div>
                         </div>
-                    )})}
-                </div>
+                    )
+                })}
             </section>
         )
     }
