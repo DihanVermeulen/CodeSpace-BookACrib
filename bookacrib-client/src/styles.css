@@ -49,7 +49,7 @@
     color: #fff;
 }
 
-.home-page--main-section--card {
+.main-section--card {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -59,3 +59,11 @@
     height: 70vh;
     font-family: 'grenge';
 }
+
+.main-section--card--hotel-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
