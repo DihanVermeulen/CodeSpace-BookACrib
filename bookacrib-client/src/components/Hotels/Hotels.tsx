@@ -10,19 +10,18 @@ export const Hotels = () => {
             .then((response): any => setHotels(response.data));
     }, [])
 
-    console.log(hotels);
-
     if (hotels) {
         return (
             <section className="home-page--main-section--card">
                 <h3>Compare hotels and book your stay</h3>
                 <div>
-                    {hotels.map((hotel, key) => (
-                        <div key={key}>
+                    {hotels.map((hotel, key) => {
+                        return (
+                        <div key={key} className='home-page--main-section--card--hotel-card'>
                             <div>{hotel.hotel_name}</div>                          
                             <div>{hotel.rating}</div>                          
                         </div>
-                    ))}
+                    )})}
                 </div>
             </section>
         )
