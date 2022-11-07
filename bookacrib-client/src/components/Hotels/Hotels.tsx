@@ -1,7 +1,38 @@
+import { JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useEffect, useState } from "react";
+import { JsxElement } from "typescript";
+import { api } from "../../axios";
+
 export const Hotels = () => {
-    return (
-        <section className="home-page--main-section--card">
-            <h3>Compare hotels and book your stay</h3>
-        </section>
-    )
+    const [hotels, setHotels] = useState<any[]>([]);
+
+    useEffect(() => {
+        api.get('/hotels')
+            .then((response): any => setHotels(response.data));
+    }, [])
+
+    console.log(hotels);
+
+    if (hotels) {
+        return (
+            <section className="home-page--main-section--card">
+                <h3>Compare hotels and book your stay</h3>
+                <div>
+                    {hotels.map((hotel, key) => (
+                        <div key={key}>
+                            <div>{hotel.hotel_name}</div>                          
+                            <div>{hotel.rating}</div>                          
+                        </div>
+                    ))}
+                </div>
+            </section>
+        )
+    }
+    else {
+        return (
+            <section className="home-page--main-section--card">
+                <h3>Compare hotels and book your stay</h3>
+                loading...
+            </section>
+        )
+    }
 }
