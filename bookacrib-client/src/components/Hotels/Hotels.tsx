@@ -13,16 +13,18 @@ export const Hotels = () => {
     if (hotels) {
         return (
             <section className="main-section--card">
-                <h3>Compare hotels and book your stay</h3>
+                <h2>Compare hotels and book your stay</h2>
+                <section className="main-section--card--hotel-section">
                 {hotels.map((hotel, key) => {
                     return (
-                        <div key={key} className='main-section--card--hotel-card'>
+                        <article key={key} className='main-section--card--hotel-card'>
                             <img src={hotel.image} alt="hotel"></img>
                             <div>{hotel.hotel_name}</div>
                             <div>{hotel.rating}</div>
-                        </div>
+                        </article>
                     )
                 })}
+                </section>
             </section>
         )
     }
