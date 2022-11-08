@@ -71,6 +71,7 @@ h2 {
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    color: #000;
 }
 
 .main-section--card--hotel-card {
