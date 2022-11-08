@@ -1,3 +1,5 @@
+import './LoginCard.css';
+
 export const LoginCard = () => {
     return (
         <section className="login-page--card">
