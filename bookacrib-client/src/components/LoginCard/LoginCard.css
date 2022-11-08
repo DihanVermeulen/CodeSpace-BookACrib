@@ -1,0 +1,5 @@
+.login-page--card {
+    background-color: var(--primary-bg-colour);
+    padding: 10px;
+    color: #fff;
+}
