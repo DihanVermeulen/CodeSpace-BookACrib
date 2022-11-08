@@ -29,7 +29,7 @@ export const Hotels = () => {
                                 <div>hotel rating:{hotel.rating}</div>
                                 <button onClick={() => {
                                     navigate({
-                                        pathname: '/compare-hotels',
+                                        pathname: 'compare-hotels',
                                         search: `?hotel=${key}`,
                                     });
                                 }}>Book Now</button>
