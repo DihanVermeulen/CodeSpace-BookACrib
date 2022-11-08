@@ -40,7 +40,9 @@ export const Hotels = () => {
         return (
             <section className="home-page--main-section--card">
                 <h3>Compare hotels and book your stay</h3>
-                loading...
+                <section className="main-section--card--hotel-section">
+                    loading...
+                </section>
             </section>
         )
     }
