@@ -11,6 +11,8 @@ import { Home } from './routes/Home';
 import { Login } from './routes/Login';
 import { CompareHotels } from './components/CompareHotels/CompareHotels';
 import { Hotels } from './components/Hotels/Hotels';
+import { LoginCard } from './components/LoginCard/LoginCard';
+import { RegisterCard } from './components/RegisterCard/RegisterCard';
 
 const router = createBrowserRouter([
   {
@@ -22,14 +24,24 @@ const router = createBrowserRouter([
         element: <Hotels />
       },
       {
-        path: 'compare-hotels',
+        path: 'hotels/compare-hotels',
         element: <CompareHotels />
       }
     ]
   },
   {
-    path: "login",
-    element: <Login />
+    path: "login&register",
+    element: <Login />,
+    children: [
+      {
+        path: 'login',
+        element: <LoginCard />
+      },
+      {
+        path: 'login&register/register',
+        element: <RegisterCard />
+      }
+    ]
   }
 ]);
 
