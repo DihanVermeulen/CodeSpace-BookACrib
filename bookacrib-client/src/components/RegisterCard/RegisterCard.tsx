@@ -1,5 +1,5 @@
 export const RegisterCard = () => {
     return (
-        <section></section>
+        <section className="login-page--card"></section>
     )
 }
