@@ -13,15 +13,15 @@ $app = new \Slim\App([
 
 header('Access-Control-Allow-Origin: *');
 
-$app->get('/hotels', function (Request $request, Response $response, array $args) {
-    $response = [
-        [
-            "hotel_name" => "The Silo",
-            "rating" => 5,
-            "rate" => 1000,
-            "image" => "http://localhost:9000/src/public/images/thesilo.jpg"
-        ]
-    ];
+$app->get('/hotels', function () {
+    require_once('../dbconn/dbconn.php');
+    $query = "SELECT * FROM hotels";
+    $result = $db_connection->query($query);
+
+
+    while ($row = $result->fetch_assoc()) {
+        $response[] = $row;
+    }
 
     echo json_encode($response);
 });
