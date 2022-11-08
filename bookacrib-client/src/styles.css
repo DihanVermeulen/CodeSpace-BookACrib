@@ -11,6 +11,20 @@ h2 {
     font-size: 20px;
 }
 
+#login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-bg-colour);
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-page--card {
+    background-color: var(--primary-bg-colour);
+    padding: 10px;
+}
+
 .home-page--main-header {
     background-color: var(--primary-bg-colour);
     display: flex;
@@ -33,6 +47,14 @@ h2 {
     list-style-type: none;
     margin: 10px;
     padding: 0;
+}
+
+.home-page--vertical-navigation ul li {
+    cursor: pointer;
+}
+
+.home-page--vertical-navigation ul li:hover {
+    text-decoration: underline;
 }
 
 .home-page--main-section {
