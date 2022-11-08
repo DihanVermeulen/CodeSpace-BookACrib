@@ -3,14 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../axios";
 
 export const Hotels = () => {
-    const [hotels, setHotels] = useState<any[]>([]);
+    const [hotels, setHotels] = useState<any[]>();
 
+    /**
+     * Fetches hotel data through get request and sets hotels state
+     */
     useEffect(() => {
         api.get('/hotels')
-            .then((response): any => setHotels(response.data));
+            .then((response): any => setHotels(response.data))
+            .catch((err) => console.log(err));
     }, [])
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // Uses react dom navigation
 
     if (hotels) {
         return (
@@ -38,7 +42,7 @@ export const Hotels = () => {
     }
     else {
         return (
-            <section className="home-page--main-section--card">
+            <section className="main-section--card">
                 <h3>Compare hotels and book your stay</h3>
                 <section className="main-section--card--hotel-section">
                     loading...
