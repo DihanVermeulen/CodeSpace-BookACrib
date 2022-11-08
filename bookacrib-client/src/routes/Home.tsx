@@ -17,7 +17,7 @@ export const Home = () => {
             </header>
             <nav className="home-page--vertical-navigation">
                 <ul>
-                    <li>Logout</li>
+                    <li onClick={() => navigate('login&register')}>Logout</li>
                 </ul>
             </nav>
             <main className="home-page--main-section">
