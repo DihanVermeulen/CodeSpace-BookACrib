@@ -10,11 +10,12 @@ interface IHotel {
 }
 
 export const CompareHotels: React.FC = (): any => {
-    const [searchParams] = useSearchParams();
-    const [hotel, setHotel] = useState<any>([]);
+    const [searchParams] = useSearchParams(); 
+    const [hotel, setHotel] = useState<IHotel>();
 
+    // Sets hotel state to hotel specified in search params
     useEffect(() => {
-        let hotelIndex: any = searchParams.get('hotel');
+        let hotelIndex: any = searchParams.get('hotel'); // Gets search paramaters
         api.get('/hotels')
             .then((response): any => {
                 let selectedHotel = response.data[hotelIndex];
