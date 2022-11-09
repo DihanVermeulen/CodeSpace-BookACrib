@@ -20,13 +20,14 @@ export const Hotels = () => {
         return (
             <section className="main-section--card">
                 <h2>Compare hotels and book your stay</h2>
+                <hr />
                 <section className="main-section--card--hotel-section">
                     {hotels.map((hotel, key) => {
                         return (
                             <article key={key} className='main-section--card--hotel-card'>
                                 <img src={hotel.image} alt="hotel"></img>
                                 <div>{hotel.hotel_name}</div>
-                                <div>hotel rating:{hotel.rating}</div>
+                                <div>hotel rating:{hotel.hotel_rating}</div>
                                 <button onClick={() => {
                                     navigate({
                                         pathname: 'compare-hotels',
