@@ -1,6 +1,11 @@
+import React from 'react';
 import './LoginCard.css';
 
-export const LoginCard = () => {
+interface props {
+    setState: React.Dispatch<React.SetStateAction<any>>
+}
+
+export const LoginCard: React.FC<props> = ({setState}: props) => {
     return (
         <section className="login-page--card">
             <h1>Sign in</h1>
@@ -17,8 +22,9 @@ export const LoginCard = () => {
                     <span className="bar"></span>
                     <label className='label'>Password</label>
                 </div>
-                <span className='bar'></span>
             </form>
+            <p>Need an account?</p>
+            <div onClick={() => {setState(false)}}>Sign up</div>
         </section>
     )
 }
