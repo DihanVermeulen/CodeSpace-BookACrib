@@ -31,24 +31,24 @@ h2 {
     width: 15rem;
 }
 
-.home-page--vertical-navigation {
+.home-page--horisontal-navigation {
     color: #fff;
     background-color: var(--secondary-bg-colour);
     display: flex;
     justify-content: center;
 }
 
-.home-page--vertical-navigation ul {
+.home-page--horisontal-navigation ul {
     list-style-type: none;
     margin: 10px;
     padding: 0;
 }
 
-.home-page--vertical-navigation ul li {
+.home-page--horisontal-navigation ul li {
     cursor: pointer;
 }
 
-.home-page--vertical-navigation ul li:hover {
+.home-page--horisontal-navigation ul li:hover {
     text-decoration: underline;
 }
 
@@ -71,9 +71,6 @@ h2 {
 }
 
 .main-section--card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.8);
@@ -82,6 +79,17 @@ h2 {
     width: 100%;
     min-height: 100%;
     margin: 10px;
+}
+
+.main-section--card-form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main-section--card-form-group input {
+    width: 10rem;
 }
 
 .main-section--card--hotel-section {
