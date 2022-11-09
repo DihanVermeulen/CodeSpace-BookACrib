@@ -35,11 +35,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <LoginCard />
+        element: <LoginCard setState={() => {}} /> // Only passing in prop here so that error does not get thrown
       },
       {
-        path: 'login&register/register',
-        element: <RegisterCard />
+        path: 'register',
+        element: <RegisterCard setState={() => {}} /> // Only passing in prop here so that error does not get thrown
       }
     ]
   }
