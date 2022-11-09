@@ -15,7 +15,7 @@ export const Home = () => {
             <header className="home-page--main-header">
                     <img className="home-page--main-header--logo" src={logo}></img>
             </header>
-            <nav className="home-page--vertical-navigation">
+            <nav className="home-page--horisontal-navigation">
                 <ul>
                     <li onClick={() => navigate('login&register')}>Logout</li>
                 </ul>
