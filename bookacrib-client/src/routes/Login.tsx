@@ -2,6 +2,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { LoginCard } from "../components/LoginCard/LoginCard";
 import { RegisterCard } from "../components/RegisterCard/RegisterCard";
+import axios from "axios";
 
 export const Login = () => {
     const [showLoginCard, setShowLoginCard] = useState(true)
@@ -9,9 +10,7 @@ export const Login = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        navigate('login');
     }, [])
-
 
     return (
         <div id="login-page">
