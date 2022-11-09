@@ -1,18 +1,22 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { LoginCard } from "../components/LoginCard/LoginCard";
+import { RegisterCard } from "../components/RegisterCard/RegisterCard";
 
 export const Login = () => {
+    const [showLoginCard, setShowLoginCard] = useState(true)
 
     const navigate = useNavigate();
 
     useEffect(() => {
-      navigate('login');
+        navigate('login');
     }, [])
-    
+
 
     return (
         <div id="login-page">
-            <Outlet />
+            {showLoginCard && <LoginCard setState={setShowLoginCard} />}
+            {!showLoginCard && <RegisterCard setState={setShowLoginCard} />}
         </div>
     )
 }
