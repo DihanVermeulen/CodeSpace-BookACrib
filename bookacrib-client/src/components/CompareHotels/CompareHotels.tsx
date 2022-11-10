@@ -1,6 +1,6 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { api } from "../../axios";
+import { api } from "../../api/axios";
 import { fetchSearchParams, scrollPageToTop } from '../../utils/utils';
 
 interface IHotel {
