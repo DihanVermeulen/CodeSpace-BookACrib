@@ -1,6 +1,7 @@
 import { JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../axios";
+import { scrollPageToTop } from "../../utils/utils";
 
 export const Hotels = () => {
     const [hotels, setHotels] = useState<any[]>();
@@ -30,9 +31,10 @@ export const Hotels = () => {
                                 <div>hotel rating:{hotel.hotel_rating}</div>
                                 <button onClick={() => {
                                     navigate({
-                                        pathname: 'compare-hotels',
+                                        pathname: '/compare-hotels',
                                         search: `?hotel=${key}`,
                                     });
+                                    scrollPageToTop();
                                 }}>Book Now</button>
                             </article>
                         )
