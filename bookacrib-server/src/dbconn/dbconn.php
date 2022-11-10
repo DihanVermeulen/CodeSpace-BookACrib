@@ -3,7 +3,8 @@
 require __DIR__ . './db.config.php';
 
 // Creates connection to database
-$db_connection = new mysqli(server_host, server_username, server_password, dbname);
+$db_config = new DbConfig();
+$db_connection = $db_config->connectToDatabase();
 
 // Checks connection to database
 if ($db_connection->connect_errno) {
