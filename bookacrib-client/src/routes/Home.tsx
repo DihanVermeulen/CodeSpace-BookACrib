@@ -7,7 +7,7 @@ export const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        navigate('hotels');
+        navigate('/hotels');
     }, []);
 
     return (
