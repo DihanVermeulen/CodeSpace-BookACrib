@@ -1,6 +1,23 @@
 <?php
 
-define('server_host', 'localhost');
-define('server_username', 'root');
-define('server_password', '');
-define('dbname', 'hotel_booking');
+class DbConfig
+{
+
+    private $host = 'localhost';
+    private $user = 'root';
+    private $password = '';
+    private $db = 'hotel_booking';
+
+    public function connectToDatabase()
+    {
+        $db_connection = new mysqli($this->host, $this->user, $this->password, $this->db);
+
+        if ($db_connection->connect_error) {
+            die("Connection failed: " . $db_connection->connect_error);
+
+        } else {
+            //echo "connected successfully";
+            return $db_connection;
+        }
+    }
+}
