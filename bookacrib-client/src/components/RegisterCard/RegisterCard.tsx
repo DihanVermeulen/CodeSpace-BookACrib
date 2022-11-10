@@ -11,7 +11,7 @@ export const RegisterCard: React.FC<props> = ({ setState }) => {
             <h1>Create Account</h1>
             <form method='post'>
                 <div className='group'>
-                    <input id='email' className="input" type="text" required />
+                    <input id='email' autoFocus className="input" type="text" required />
                     <span className="highlight"></span>
                     <span className="bar"></span>
                     <label className="label">Email</label>
