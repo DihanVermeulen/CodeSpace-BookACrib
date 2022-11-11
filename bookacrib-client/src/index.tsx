@@ -13,6 +13,7 @@ import { CompareHotels } from './components/CompareHotels/CompareHotels';
 import { Hotels } from './components/Hotels/Hotels';
 import { LoginCard } from './components/LoginCard/LoginCard';
 import { RegisterCard } from './components/RegisterCard/RegisterCard';
+import { Bookings } from './components/Bookings/Bookings';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/compare-hotels',
         element: <CompareHotels />
+      },
+      {
+        path: '/bookings',
+        element: <Bookings />
       }
     ]
   },
