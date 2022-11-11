@@ -17,6 +17,8 @@ export const Home = () => {
             </header>
             <nav className="home-page--horisontal-navigation">
                 <ul>
+                    <li onClick={() => navigate('hotels')}>Hotels</li>
+                    <li onClick={() => navigate('Bookings')}>My Bookings</li>
                     <li onClick={() => navigate('login&register')}>Logout</li>
                 </ul>
             </nav>
