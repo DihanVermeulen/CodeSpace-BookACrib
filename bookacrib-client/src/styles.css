@@ -40,7 +40,10 @@ h2 {
 
 .home-page--horisontal-navigation ul {
     list-style-type: none;
+    display: flex;
     margin: 10px;
+    width: 100%;
+    justify-content: space-evenly;
     padding: 0;
 }
 
