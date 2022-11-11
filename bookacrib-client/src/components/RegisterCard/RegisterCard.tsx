@@ -19,7 +19,7 @@ export const RegisterCard: React.FC<props> = ({ setState }) => {
             userRole: "customer"
         });
         console.log(data);
-        api.post('/users', data, {
+        api.post('/register', data, {
             headers: {
                 'Authorization': 'Basic xxxxxxxxxxxxxxxxxxx',
                 'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ export const RegisterCard: React.FC<props> = ({ setState }) => {
                     <span className="bar"></span>
                     <label className="label">password</label>
                 </div>
-                <input type='submit' />
+                <input type='submit' value='Create Account' />
             </form>
         </section>
     )
