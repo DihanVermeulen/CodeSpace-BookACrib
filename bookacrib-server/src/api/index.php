@@ -26,21 +26,13 @@ $app->get('/hotels', function () {
     echo json_encode($response);
 });
 
-$app->post('/users', function (Request $request, Response $response) {
+// Post to create user and add into database
+$app->post('/register', function (Request $request, Response $response) {
     require_once('../dbconn/dbconn.php');
-
-    // $user = new User($request->getParsedBody()['userName'], $request->getParsedBody()['userEmail'], $request->getParsedBody()['userPassword'], $request->getParsedBody()['userRole']);
     $data = $request->getParsedBody();
 
-    // $test_user_name = $request->params;
-
-    $requestData = $request->getParsedBody();
-
-    $user = new User($requestData['userName'], $requestData['userEmail'], $requestData['userPassword'], $requestData['userRole']);
+    $user = new User($data['userName'], $data['userEmail'], $data['userPassword'], $data['userRole']);
     $userObject = $user->createUser();
-
-    // $html = var_export($userObject, true);
-    // $response->getBody()->write($html);
 
     $user_id = $userObject['user_id'];
     $user_name = $userObject['user_name'];
@@ -48,8 +40,7 @@ $app->post('/users', function (Request $request, Response $response) {
     $user_password = $userObject['user_password'];
 
     $query = "INSERT INTO users (user_id, user_name, user_email, user_password) VALUES (?,?,?,?)";
-    // $query = "INSERT INTO users (user_id, user_name, user_email, user_password) VALUES ($user_id,$user_name, $user_email,$user_password)";
-    // $response->getBody()->write(json_encode($stmt));
+
     try {
         $stmt = $db_connection->prepare($query);
 
@@ -72,7 +63,58 @@ $app->post('/users', function (Request $request, Response $response) {
 });
 
 $app->get('/users', function () {
+    require_once('../dbconn/dbconn.php');
+
+    $query = "SELECT user_name, user_email FROM users";
+    $result = $db_connection->query($query);
+
+
+    while ($row = $result->fetch_assoc()) {
+        $response[] = $row;
+    }
+
+    echo json_encode($response);
 });
 
+$app->post(
+    '/login',
+    function (Request $request, Response $response) {
+        require_once('../dbconn/dbconn.php');
+        $update = $request->getParsedBody();
+        $query = "INSERT INTO sessions (session_state, user_id, created, ip) VALUES (?, ?, ?, ?)";
+        $state_update = $update['user_update'];
+        $user_id = $update['user_id'];
+
+        try {
+            // Preparing query for binding
+            $stmt = $db_connection->prepare($query);
+
+            // Variables that goes into query
+            $time = time();
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $state_update = $update['user_update'];
+            $user_id = $update['user_id'];
+
+            // Binding variables and executing query
+            $stmt->bind_param('ssss', $state_update, $user_id, $time, $ip);
+            $stmt->execute();
+
+            // Returns if success
+            return $response
+                ->withHeader('content-type', 'application/json')
+                ->withStatus(200);
+
+            // Returns if fail
+        } catch (PDOException $e) {
+            $error = array(
+                "message" => $e->getMessage()
+            );
+            $response->getBody()->write(json_encode($error));
+            return $response
+                ->withHeader('content-type', 'application/json')
+                ->withStatus(500);
+        }
+    }
+);
 
 $app->run();
