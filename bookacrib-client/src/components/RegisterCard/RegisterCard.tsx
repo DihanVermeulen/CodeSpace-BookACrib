@@ -1,5 +1,6 @@
 import '../../utils/utils.css';
 import { api } from '../../api/axios';
+import { register } from '../../utils/utils';
 
 interface props {
     setState: React.Dispatch<React.SetStateAction<any>>
@@ -14,19 +15,11 @@ export const RegisterCard: React.FC<props> = ({ setState }) => {
         let passwordInput = document.querySelector('#password') as HTMLInputElement;
         const data: any = JSON.stringify({
             userName: usernameInput.value,
-            userEmail: emailInput.value,
+            userEmail: emailInput.value.trim(),
             userPassword: passwordInput.value,
             userRole: "customer"
         });
-        console.log(data);
-        api.post('/register', data, {
-            headers: {
-                'Authorization': 'Basic xxxxxxxxxxxxxxxxxxx',
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+        register(data);
     }
 
     return (
