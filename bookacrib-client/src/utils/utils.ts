@@ -20,10 +20,12 @@ export const scrollPageToTop = () => {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 }
 
-export const login = () => {
+// Function to log user in
+export const login = (email: string) => {
     api.post('/login', JSON.stringify({
         user_update: 1,
-        user_id: "C#32b31047bf68aefa8bb491d46a432e8c"
+        user_id: "C#934ae3fe682fd9b04e9a8b15dd789911",
+        user_email: email
     }),
         {
             headers: {
@@ -33,4 +35,16 @@ export const login = () => {
         })
         .then((response) => console.log(response))
         .catch((err) => console.log(err));
+}
+
+// Function to register user
+export const register = (data: any) => {
+    api.post('/register', data, {
+        headers: {
+            'Authorization': 'Basic xxxxxxxxxxxxxxxxxxx',
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
 }
