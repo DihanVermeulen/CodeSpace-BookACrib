@@ -2,6 +2,7 @@ import React from 'react';
 import './LoginCard.css';
 import '../../utils/utils.css';
 import { login } from '../../utils/utils';
+import { api } from '../../api/axios';
 
 interface props {
     setState: React.Dispatch<React.SetStateAction<any>>
@@ -10,7 +11,12 @@ interface props {
 const handleSubmit = (event:any) => {
     event.preventDefault();
     console.log('submitted');
-    login();
+    api.get('/login', {
+        params: {
+        user_email: "dihan.vermeulen12@gmail.com"
+    }})
+    .then(res => console.log(res));
+    // login("dihan.vermeulen12@gmail.com");
 }
 
 export const LoginCard: React.FC<props> = ({setState}: props) => {
