@@ -1,5 +1,6 @@
 <?php
 
+use LDAP\Result;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -76,12 +77,35 @@ $app->get('/users', function () {
     echo json_encode($response);
 });
 
+$app->get('/login', function (Request $request) {
+    require_once('../dbconn/dbconn.php');
+    $data = $request->getQueryParams();
+
+    $user_email = $data['user_email'];
+
+    // $query = "SELECT user_id FROM users WHERE user_email = '$user_email'";
+    $query = "SELECT user_id FROM users WHERE user_email = '$user_email'";
+
+    try {
+        $result = $db_connection->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            $response[] = $row;
+        }
+        echo json_encode($response);
+    } catch (PDOException $e) {
+        echo $e;
+    }
+});
+
 $app->post(
     '/login',
     function (Request $request, Response $response) {
         require_once('../dbconn/dbconn.php');
         $update = $request->getParsedBody();
+
         $query = "INSERT INTO sessions (session_state, user_id, created, ip) VALUES (?, ?, ?, ?)";
+
         $state_update = $update['user_update'];
         $user_id = $update['user_id'];
 
