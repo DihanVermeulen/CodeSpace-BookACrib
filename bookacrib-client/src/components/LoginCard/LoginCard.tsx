@@ -15,24 +15,33 @@ export const LoginCard: React.FC<props> = ({ setState }: props) => {
     const handleSubmit = (event: any) => {
         event.preventDefault();
         console.log('submitted');
-        document.querySelector('#loginEmail')
+        let emailInput = document.querySelector('#loginEmail') as HTMLInputElement;
+        let passwordInput = document.querySelector('#loginPassword') as HTMLInputElement;
+
         // Checks if user exists and password matches then logs user in and creates session
         api.get('/login', {
             params: {
-                user_email: "dihan.vermeulen12@gmail.com"
+                user_email: emailInput.value,
+                user_password: passwordInput.value
             }
         })
             .then(res => {
                 let resId: any;
-                for (let id of res.data) {
-                    resId = id.user_id;
-                };
-                console.log(resId);
-                login(resId, 1);
-                localStorage.setItem('loggedInAs', JSON.stringify(resId));
-                navigate('/');
+                console.log(res.data);
+                if (res.data) {
+                    let resId: any;
+                    for (let id of res?.data) {
+                        resId = id.user_id;
+                    };
+                    console.log(resId);
+                    login(resId, 1);
+                    localStorage.setItem('loggedInAs', JSON.stringify(resId));
+                    navigate('/');
+                }
+                else {
+                    console.log('error in logging in');
+                }
             })
-            .catch((err) => { console.log('error in logging in') });
     }
 
     return (
