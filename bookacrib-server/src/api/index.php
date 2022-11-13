@@ -141,4 +141,22 @@ $app->post(
     }
 );
 
+$app->get('/session', function (Request $request) {
+    require_once('../dbconn/dbconn.php');
+    // $query = "SELECT session_state FROM sessions WHERE user_id in (SELECT max(created) FROM session WHERE user_id = 'C#4bad5bff81a6c882200496950260a6e1' AND session_state = 1)";
+    // $query = "SELECT session_state FROM sessions WHERE user_id ='C#4bad5bff81a6c882200496950260a6e1' ";
+    $query = "SELECT user_id, MAX(created) AS most_recent_signin FROM sessions WHERE user_id ='C#4bad5bff81a6c882200496950260a6e1'";
+
+    try {
+        $result = $db_connection->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            $response[] = $row;
+        }
+        echo json_encode($response);
+    } catch (PDOException $e) {
+        echo $e;
+    }
+});
+
 $app->run();
