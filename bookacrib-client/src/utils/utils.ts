@@ -21,11 +21,10 @@ export const scrollPageToTop = () => {
 }
 
 // Function to log user in
-export const login = (email: string) => {
+export const login = (id: string) => {
     api.post('/login', JSON.stringify({
         user_update: 1,
-        user_id: "C#934ae3fe682fd9b04e9a8b15dd789911",
-        user_email: email
+        user_id: id,
     }),
         {
             headers: {
@@ -33,7 +32,6 @@ export const login = (email: string) => {
                 'Content-Type': 'application/json'
             }
         })
-        .then((response) => console.log(response))
         .catch((err) => console.log(err));
 }
 
