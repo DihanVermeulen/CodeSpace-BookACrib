@@ -28,7 +28,7 @@ export const LoginCard: React.FC<props> = ({ setState }: props) => {
                     resId = id.user_id;
                 };
                 console.log(resId);
-                login(resId);
+                login(resId, 1);
                 localStorage.setItem('loggedInAs', JSON.stringify(resId));
                 navigate('/');
             })
