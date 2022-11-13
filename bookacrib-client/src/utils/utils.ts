@@ -46,3 +46,15 @@ export const register = (data: any) => {
         .then(res => console.log(res))
         .catch(err => console.log(err));
 }
+
+/**
+ * Gets last session of user
+ * @param id 
+ */
+export const getLastSession = (id: string):any => {
+    api.get('/session', {
+        params: {
+            userId: id
+        }
+    })
+}
