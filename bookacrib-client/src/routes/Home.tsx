@@ -4,6 +4,7 @@ import logo from '../assets/images/logo.png';
 import { useEffect, useState } from "react";
 
 export const Home = () => {
+    const [loggedInAs, setLoggedInAs] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
