@@ -11,8 +11,8 @@ export const RegisterCard: React.FC<props> = ({ setState }) => {
         event.preventDefault();
         console.log('clicked submit');
         let usernameInput = document.querySelector('#username') as HTMLInputElement;
-        let emailInput = document.querySelector('#email') as HTMLInputElement;
-        let passwordInput = document.querySelector('#password') as HTMLInputElement;
+        let emailInput = document.querySelector('#registerEmail') as HTMLInputElement;
+        let passwordInput = document.querySelector('#registerPassword') as HTMLInputElement;
         const data: any = JSON.stringify({
             userName: usernameInput.value,
             userEmail: emailInput.value.trim(),
@@ -34,13 +34,13 @@ export const RegisterCard: React.FC<props> = ({ setState }) => {
                     <label className="label">Username</label>
                 </div>
                 <div className='group'>
-                    <input id='email' autoFocus className="input" type="text" required />
+                    <input id='registerEmail' autoFocus className="input" type="text" required />
                     <span className="highlight"></span>
                     <span className="bar"></span>
                     <label className="label">Email</label>
                 </div>
                 <div className='group'>
-                    <input id='password' className="input" type="password" required />
+                    <input id='registerPassword' className="input" type="password" required />
                     <span className="highlight"></span>
                     <span className="bar"></span>
                     <label className="label">password</label>
