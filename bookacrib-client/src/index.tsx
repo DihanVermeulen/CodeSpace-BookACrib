@@ -14,6 +14,7 @@ import { Hotels } from './components/Hotels/Hotels';
 import { LoginCard } from './components/LoginCard/LoginCard';
 import { RegisterCard } from './components/RegisterCard/RegisterCard';
 import { Bookings } from './components/Bookings/Bookings';
+import { Profile } from './components/Profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: '/bookings',
         element: <Bookings />
+      },
+      {
+        path: '/profile',
+        element: <Profile />
       }
     ]
   },
