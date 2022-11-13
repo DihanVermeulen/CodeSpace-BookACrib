@@ -1,7 +1,7 @@
 import { api } from "../api/axios";
 
 /**
- * Fetches all parameters in search and return as an array
+ * Fetches all parameters in search and returns as an array
  * @param args All parameters that will be fetched
  * @returns 
  */
@@ -20,10 +20,14 @@ export const scrollPageToTop = () => {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 }
 
-// Function to log user in
-export const login = (id: string) => {
+/**
+ * Logs user in
+ * @param id 
+ * @param updateState 
+ */
+export const login = (id: string, updateState: number) => {
     api.post('/login', JSON.stringify({
-        user_update: 1,
+        user_update: updateState,
         user_id: id,
     }),
         {
@@ -35,7 +39,10 @@ export const login = (id: string) => {
         .catch((err) => console.log(err));
 }
 
-// Function to register user
+/**
+ * Registers user to database
+ * @param data 
+ */
 export const register = (data: any) => {
     api.post('/register', data, {
         headers: {
