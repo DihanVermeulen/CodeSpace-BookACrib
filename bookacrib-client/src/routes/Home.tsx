@@ -30,12 +30,13 @@ export const Home = () => {
             <nav className="home-page--horisontal-navigation">
                 <ul>
                     <li onClick={() => navigate('hotels')}>Hotels</li>
-                    <li onClick={() => navigate('Bookings')}>My Bookings</li>
+                    <li onClick={() => navigate('Bookings')}>View Bookings</li>
                     <li onClick={() => {
                         setLoggedInAs(null);
                         localStorage.removeItem('loggedInAs');
                         navigate('login&register');
                     }}>Logout</li>
+                    <li onClick={() => navigate('hotels')}>My Profile</li>
                 </ul>
             </nav>
             <main className="home-page--main-section">
