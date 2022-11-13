@@ -82,17 +82,28 @@ $app->get('/login', function (Request $request) {
     $data = $request->getQueryParams();
 
     $user_email = $data['user_email'];
+    $user_password = $data['user_password'];
 
-    // $query = "SELECT user_id FROM users WHERE user_email = '$user_email'";
-    $query = "SELECT user_id FROM users WHERE user_email = '$user_email'";
+    $query = "SELECT user_id, user_password FROM users WHERE user_email = '$user_email'";
 
     try {
         $result = $db_connection->query($query);
 
-        while ($row = $result->fetch_assoc()) {
-            $response[] = $row;
+        // Returns false if email doesn't exist
+        if (mysqli_num_rows($result) == 0) {
+            echo json_encode(false);
+        } else {
+            while ($row = $result->fetch_assoc()) {
+                $response[] = $row;
+            }
+
+            // Checks if requested password matches encrypted password
+            if (password_verify($user_password, $response[0]['user_password'])) {
+                echo json_encode($response);
+            } else {
+                echo json_encode(false);
+            }
         }
-        echo json_encode($response);
     } catch (PDOException $e) {
         echo $e;
     }
@@ -143,9 +154,9 @@ $app->post(
 
 $app->get('/session', function (Request $request) {
     require_once('../dbconn/dbconn.php');
-    // $query = "SELECT session_state FROM sessions WHERE user_id in (SELECT max(created) FROM session WHERE user_id = 'C#4bad5bff81a6c882200496950260a6e1' AND session_state = 1)";
-    // $query = "SELECT session_state FROM sessions WHERE user_id ='C#4bad5bff81a6c882200496950260a6e1' ";
-    $query = "SELECT user_id, MAX(created) AS most_recent_signin FROM sessions WHERE user_id ='C#4bad5bff81a6c882200496950260a6e1'";
+    $requestData = $request->getQueryParams();
+
+    $query = "SELECT user_id, MAX(created) AS most_recent_signin FROM sessions WHERE user_id ='C#4bad5bff81a6c882200496950260a6e1'"; // Gets last session of user
 
     try {
         $result = $db_connection->query($query);
