@@ -91,4 +91,15 @@ export const createBooking = (hotelId: any, userId: any, arrivalDate: any, depar
     let booking = new Booking(hotelId, userId, arrivalDate, departureDate);
 
     console.log(booking.getBooking());
+
+    let data = JSON.stringify(booking.getBooking());
+
+    api.post('/booking', data, {
+        headers: {
+            'Authorization': 'Basic xxxxxxxxxxxxxxxxxxx',
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
 }
