@@ -29,7 +29,7 @@ export const Hotels = () => {
                                 <img src={hotel.image} alt="hotel"></img>
                                 <div>{hotel.hotel_name}</div>
                                 <div>hotel rating:{hotel.hotel_rating}</div>
-                                <button onClick={() => {
+                                <button className="primary-button" onClick={() => {
                                     navigate({
                                         pathname: '/compare-hotels',
                                         search: `?hotel=${key}`,
