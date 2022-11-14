@@ -14,6 +14,7 @@ export const CompareHotels: React.FC = (): any => {
     const [searchParams] = useSearchParams();
     const [hotel, setHotel] = useState<IHotel>();
     const [allHotels, setAllHotels] = useState<any[]>([]);
+    const [totalDays, setTotalDays] = useState<any>(0);
 
     const navigate = useNavigate();
 
