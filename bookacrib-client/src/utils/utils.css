@@ -3,3 +3,7 @@
     cursor: pointer;
     font-size: 18px;
 }
+
+.display-flex {
+    display: flex;
+}
