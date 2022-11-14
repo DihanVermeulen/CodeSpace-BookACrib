@@ -1,10 +1,11 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../api/axios";
-import { calculateNumDays, fetchSearchParams, scrollPageToTop } from '../../utils/utils';
+import { calculateNumDays, createBooking, fetchSearchParams, scrollPageToTop } from '../../utils/utils';
 import './CompareHotels.css';
 
 interface IHotel {
+    hotel_id: number,
     hotel_name: string,
     hotel_rate: any,
     hotel_rating: number,
@@ -37,7 +38,7 @@ export const CompareHotels: React.FC = (): any => {
 
         let numberOfDays = calculateNumDays(departureDate, arrivalDate);
         setTotalDays(numberOfDays);
-        if(!isNaN(numberOfDays)) {
+        if (!isNaN(numberOfDays)) {
             (document.querySelector('.totalRate') as HTMLElement).style.display = 'block';
         }
     }
@@ -49,17 +50,32 @@ export const CompareHotels: React.FC = (): any => {
             <p className="totalRate">Total Cost: R{totalDays * (hotel?.hotel_rate)}</p>
             <br />
             <form onSubmit={handleSubmit}>
-                <div className="main-section--card-form-group">
-                    <label>Arrival Date</label>
-                    <input id="arrivalDate" name="arrivalDate" type="date" />
+                <div className="flex-row justify-center">
+                    <div className="main-section--card-form-group margin-5">
+                        <label>Arrival Date</label>
+                        <input id="arrivalDate" name="arrivalDate" type="date" />
+                    </div>
+                    <div className="main-section--card-form-group margin-5">
+                        <label>Departure Date</label>
+                        <input id="departureDate" name="departureDate" type="date" />
+                    </div>
                 </div>
-                <div className="main-section--card-form-group">
-                    <label>Departure Date</label>
-                    <input id="departureDate" name="departureDate" type="date" />
-                </div>
+                <div className="error">Please enter dates</div>
                 <input className="primary-button" type="submit" value="Compare" />
             </form>
-            <button className="primary-button">Make Booking</button>
+            <button className="primary-button" onClick={() => {
+                if ((document.querySelector('#arrivalDate') as HTMLInputElement).value && (document.querySelector('#departureDate') as HTMLInputElement).value) {
+                    // Creates a booking
+                    createBooking(hotel?.hotel_id, JSON.parse(localStorage.getItem('loggedInAs') as any), new Date((document.querySelector('#arrivalDate') as HTMLInputElement).value),
+                        new Date((document.querySelector('#departureDate') as HTMLInputElement).value));
+                    // Makes error message invisible
+                    (document.querySelector('.error') as HTMLElement).style.display = 'none';
+                }
+                else {
+                    // Makes error message visible
+                    (document.querySelector('.error') as HTMLElement).style.display = 'block';
+                }
+            }}>Make Booking</button>
 
             <hr />
 
