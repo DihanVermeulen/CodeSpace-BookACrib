@@ -11,3 +11,7 @@
 .justify-center {
     justify-content: center;
 }
+
+.margin-5 {
+    margin: 5px;
+}
