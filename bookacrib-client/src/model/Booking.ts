@@ -10,10 +10,13 @@ export class Booking {
         this.arrivalDate = arrivalDate;
         this.departureDate = departureDate;
     }
-
+    /**
+     * Creates booking object
+     * @returns booking object
+     */
     getBooking() {
         return {
-            hotelId: this.hotelId,
+            hotelId: parseInt(this.hotelId),
             userId: this.userId,
             dateCreated: new Date(),
             arrivalDate: this.arrivalDate,
