@@ -2,6 +2,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import '../styles.css';
 import logo from '../assets/images/logo.png';
 import { useEffect, useState } from "react";
+import { getLastSession } from "../utils/utils";
 
 export const Home = () => {
     const [loggedInAs, setLoggedInAs] = useState(null);
@@ -22,6 +23,10 @@ export const Home = () => {
         }
     }, [loggedInAs]);
 
+    useEffect(() => {
+        getLastSession('C#4bad5bff81a6c882200496950260a6e1');
+    });
+
     return (
         <div id="home-page">
             <header className="home-page--main-header">
@@ -36,7 +41,7 @@ export const Home = () => {
                         localStorage.removeItem('loggedInAs');
                         navigate('login&register');
                     }}>Logout</li>
-                    <li onClick={() => navigate('hotels')}>My Profile</li>
+                    <li onClick={() => navigate('profile')}>My Profile</li>
                 </ul>
             </nav>
             <main className="home-page--main-section">
