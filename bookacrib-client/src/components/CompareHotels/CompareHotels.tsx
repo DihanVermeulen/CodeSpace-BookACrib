@@ -5,8 +5,8 @@ import { fetchSearchParams, scrollPageToTop } from '../../utils/utils';
 
 interface IHotel {
     hotel_name: string,
-    rate: number,
-    rating: number,
+    hotel_rate: any,
+    hotel_rating: number,
     image: string
 }
 
