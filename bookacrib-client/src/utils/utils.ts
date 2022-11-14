@@ -1,4 +1,5 @@
 import { api } from "../api/axios";
+import { Booking } from "../model/Booking";
 
 /**
  * Fetches all parameters in search and returns as an array
@@ -70,12 +71,24 @@ export const getLastSession = (id: string): any => {
 /**
  * Calculates days between two dates
  * Requires dates as arguments
- * First date must be the later date
- * @param date1 
- * @param date2 
+ * @param date1 Must be later date
+ * @param date2 Must be earlier date
  */
 export const calculateNumDays = (date1: Date, date2: Date) => {
     let totalDaysBetweenDates = Math.ceil((date1.getTime() - date2.getTime()) / (1000 * 3600 * 24));
     console.log('total days between: ', totalDaysBetweenDates);
     return totalDaysBetweenDates;
+}
+
+/**
+ * Creates a booking
+ * @param hotelId 
+ * @param userId 
+ * @param arrivalDate 
+ * @param departureDate 
+ */
+export const createBooking = (hotelId: any, userId: any, arrivalDate: any, departureDate: any) => {
+    let booking = new Booking(hotelId, userId, arrivalDate, departureDate);
+
+    console.log(booking.getBooking());
 }
