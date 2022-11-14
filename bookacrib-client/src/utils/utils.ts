@@ -58,10 +58,24 @@ export const register = (data: any) => {
  * Gets last session of user
  * @param id 
  */
-export const getLastSession = (id: string):any => {
+export const getLastSession = (id: string): any => {
     api.get('/session', {
         params: {
             userId: id
         }
     })
+        .then(res => console.log(res));
+}
+
+/**
+ * Calculates days between two dates
+ * Requires dates as arguments
+ * First date must be the later date
+ * @param date1 
+ * @param date2 
+ */
+export const calculateNumDays = (date1: Date, date2: Date) => {
+    let totalDaysBetweenDates = Math.ceil((date1.getTime() - date2.getTime()) / (1000 * 3600 * 24));
+    console.log('total days between: ', totalDaysBetweenDates);
+    return totalDaysBetweenDates;
 }
