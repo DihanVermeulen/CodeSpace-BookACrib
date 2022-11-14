@@ -10,4 +10,14 @@ export class Booking {
         this.arrivalDate = arrivalDate;
         this.departureDate = departureDate;
     }
+
+    getBooking() {
+        return {
+            hotelId: this.hotelId,
+            userId: this.userId,
+            dateCreated: new Date(),
+            arrivalDate: this.arrivalDate,
+            departureDate: this.departureDate
+        }
+    }
 }
