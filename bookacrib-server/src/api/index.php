@@ -171,4 +171,42 @@ $app->get('/session', function (Request $request) {
     }
 });
 
+$app->post('/booking', function(Request $request, Response $response) {
+    require_once('../dbconn/dbconn.php');
+    
+    $requestData = $request->getParsedBody();
+
+    $query = "INSERT INTO bookings (hotel_id, created, user_id, arrival_date, departure_date) 
+    VALUES (?, ?, ?, ?, ?)";
+
+    $hotel_id = intval($requestData['hotelId']);
+    $date_created = $requestData['dateCreated'];
+    $user_id = $requestData['userId'];
+    $arrival_date = $requestData['arrivalDate'];
+    $departure_date = $requestData['departureDate'];
+try {
+    // Preparing query for binding
+    $stmt = $db_connection->prepare($query);
+
+    // Binding variables and executing query
+    $stmt->bind_param('dssss', $hotel_id, $date_created, $user_id, $arrival_date, $departure_date);
+    $stmt->execute();
+
+    // Returns if success
+    return $response
+        ->withHeader('content-type', 'application/json')
+        ->withStatus(200);
+
+    // Returns if fail
+} catch (PDOException $e) {
+    $error = array(
+        "message" => $e->getMessage()
+    );
+    $response->getBody()->write(json_encode($error));
+    return $response
+        ->withHeader('content-type', 'application/json')
+        ->withStatus(500);
+}
+});
+
 $app->run();
