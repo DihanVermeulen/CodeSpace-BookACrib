@@ -155,8 +155,9 @@ $app->post(
 $app->get('/session', function (Request $request) {
     require_once('../dbconn/dbconn.php');
     $requestData = $request->getQueryParams();
+    $user_id = $requestData['userId'];
 
-    $query = "SELECT user_id, MAX(created) AS most_recent_signin FROM sessions WHERE user_id ='C#4bad5bff81a6c882200496950260a6e1'"; // Gets last session of user
+    $query = "SELECT session_state, user_id, MAX(created) AS most_recent_signin FROM sessions WHERE user_id ='$user_id'"; // Gets last session of user
 
     try {
         $result = $db_connection->query($query);
