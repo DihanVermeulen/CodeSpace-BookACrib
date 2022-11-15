@@ -26,8 +26,8 @@ export const CompareHotels: React.FC = (): any => {
         api.get('/hotels')
             .then((response): any => {
                 let selectedHotel = response.data[hotelIndex];
-                setAllHotels(response.data);
                 setHotel(selectedHotel);
+                setAllHotels(response.data);
             });
     }, [hotel])
 
