@@ -15,6 +15,7 @@ import { LoginCard } from './components/LoginCard/LoginCard';
 import { RegisterCard } from './components/RegisterCard/RegisterCard';
 import { Bookings } from './components/Bookings/Bookings';
 import { Profile } from './components/Profile/Profile';
+import { UpdateProfile } from './components/UpdateProfile/UpdateProfile';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile />
+      },
+      {
+        path: '/update-profile',
+        element: <UpdateProfile />
       }
     ]
   },
@@ -45,11 +50,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <LoginCard setState={() => {}} /> // Only passing in prop here so that error does not get thrown
+        element: <LoginCard setState={() => { }} /> // Only passing in prop here so that error does not get thrown
       },
       {
         path: 'register',
-        element: <RegisterCard setState={() => {}} /> // Only passing in prop here so that error does not get thrown
+        element: <RegisterCard setState={() => { }} /> // Only passing in prop here so that error does not get thrown
       }
     ]
   }
