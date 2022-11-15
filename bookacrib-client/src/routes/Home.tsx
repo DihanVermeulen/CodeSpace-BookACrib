@@ -36,12 +36,12 @@ export const Home = () => {
                 <ul>
                     <li onClick={() => navigate('hotels')}>Hotels</li>
                     <li onClick={() => navigate('Bookings')}>View Bookings</li>
+                    <li onClick={() => navigate('profile')}>My Profile</li>
                     <li onClick={() => {
                         setLoggedInAs(null);
                         localStorage.removeItem('loggedInAs');
                         navigate('login&register');
                     }}>Logout</li>
-                    <li onClick={() => navigate('profile')}>My Profile</li>
                 </ul>
             </nav>
             <main className="home-page--main-section">
