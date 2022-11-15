@@ -6,13 +6,16 @@ import { scrollPageToTop } from "../../utils/utils";
 export const Hotels = () => {
     const [hotels, setHotels] = useState<any[]>();
 
-    /**
-     * Fetches hotel data through get request and sets hotels state
-     */
+    // Fetches hotel data through get request and sets hotels state
     useEffect(() => {
-        api.get('/hotels')
-            .then((response): any => setHotels(response.data))
-            .catch((err) => console.log(err));
+        const getHotels = async () => {
+            await api.get('/hotels')
+                .then((response): any => setHotels(response.data))
+                .catch((err) => console.log(err));
+        }
+
+        getHotels();
+
     }, [])
 
     const navigate = useNavigate(); // Uses react dom navigation
