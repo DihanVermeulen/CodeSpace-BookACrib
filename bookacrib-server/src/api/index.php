@@ -171,9 +171,9 @@ $app->get('/session', function (Request $request) {
     }
 });
 
-$app->post('/booking', function(Request $request, Response $response) {
+$app->post('/booking', function (Request $request, Response $response) {
     require_once('../dbconn/dbconn.php');
-    
+
     $requestData = $request->getParsedBody();
 
     $query = "INSERT INTO bookings (hotel_id, created, user_id, arrival_date, departure_date) 
@@ -184,29 +184,60 @@ $app->post('/booking', function(Request $request, Response $response) {
     $user_id = $requestData['userId'];
     $arrival_date = $requestData['arrivalDate'];
     $departure_date = $requestData['departureDate'];
-try {
-    // Preparing query for binding
-    $stmt = $db_connection->prepare($query);
+    try {
+        // Preparing query for binding
+        $stmt = $db_connection->prepare($query);
 
-    // Binding variables and executing query
-    $stmt->bind_param('dssss', $hotel_id, $date_created, $user_id, $arrival_date, $departure_date);
-    $stmt->execute();
+        // Binding variables and executing query
+        $stmt->bind_param('dssss', $hotel_id, $date_created, $user_id, $arrival_date, $departure_date);
+        $stmt->execute();
 
-    // Returns if success
-    return $response
-        ->withHeader('content-type', 'application/json')
-        ->withStatus(200);
+        // Returns if success
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(200);
 
-    // Returns if fail
-} catch (PDOException $e) {
-    $error = array(
-        "message" => $e->getMessage()
-    );
-    $response->getBody()->write(json_encode($error));
-    return $response
-        ->withHeader('content-type', 'application/json')
-        ->withStatus(500);
-}
+        // Returns if fail
+    } catch (PDOException $e) {
+        $error = array(
+            "message" => $e->getMessage()
+        );
+        $response->getBody()->write(json_encode($error));
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(500);
+    }
+});
+
+$app->put('/update-profile', function (Request $request, Response $response) {
+    require_once('../dbconn/dbconn.php');
+
+    $requestData = $request->getParsedBody();
+
+    $new_user = new User($requestData['new_username'], $requestData['user_email'], $requestData['new_password'], "customer");
+
+    $new_user_object = $new_user->createUser();
+
+    $query = "UPDATE users SET user_name = ?, user_password = ? WHERE user_email = ?";
+
+    try {
+
+        $stmt = $db_connection->prepare($query);
+
+        $stmt->bind_param('sss', $new_user_object['user_name'], $new_user_object['user_password'], $new_user_object['user_email']);
+
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(200);
+    } catch (PDOException $e) {
+        $error = array(
+            "message" => $e->getMessage()
+        );
+        $response->getBody()->write(json_encode($error));
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(500);
+    }
 });
 
 $app->run();
