@@ -26,6 +26,7 @@ export const UpdateProfile: React.FC = () => {
                 }
             })
                 .then((res) => console.log(res));
+            navigate('/profile');
         });
     }
 
@@ -33,7 +34,6 @@ export const UpdateProfile: React.FC = () => {
         <section id="update-profile" className="main-section--card color-black">
             <div className='flex-col align-center'>
                 <img className='confirm-button' src={confirm} alt='confirm' onClick={() => {
-                    // navigate('/profile');
                     updateProfile((document.querySelector('#update-username') as HTMLInputElement).value,
                         (document.querySelector('#update-password-confirm') as HTMLInputElement).value,
                     );
