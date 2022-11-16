@@ -47,7 +47,7 @@ $app->post('/register', function (Request $request, Response $response) {
 
         $stmt->bind_param('ssss', $user_id, $user_name, $user_email, $user_password);
 
-        $result = $stmt->execute();
+        $stmt->execute();
 
         return $response
             ->withHeader('content-type', 'application/json')
