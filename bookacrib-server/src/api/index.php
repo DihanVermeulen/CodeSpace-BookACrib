@@ -77,6 +77,24 @@ $app->get('/users', function () {
     echo json_encode($response);
 });
 
+$app->get('/find-user', function (Request $request) {
+    require_once('../dbconn/dbconn.php');
+
+    $requestData = $request->getQueryParams();
+
+    $user_id = $requestData['user_id'];
+
+    $query = "SELECT user_name, user_email FROM users WHERE user_id = '$user_id'";
+    $result = $db_connection->query($query);
+
+
+    while ($row = $result->fetch_assoc()) {
+        $response[] = $row;
+    }
+
+    echo json_encode($response);
+});
+
 $app->get('/login', function (Request $request) {
     require_once('../dbconn/dbconn.php');
     $data = $request->getQueryParams();
@@ -225,6 +243,8 @@ $app->put('/update-profile', function (Request $request, Response $response) {
         $stmt = $db_connection->prepare($query);
 
         $stmt->bind_param('sss', $new_user_object['user_name'], $new_user_object['user_password'], $new_user_object['user_email']);
+
+        $stmt->execute();
 
         return $response
             ->withHeader('content-type', 'application/json')
