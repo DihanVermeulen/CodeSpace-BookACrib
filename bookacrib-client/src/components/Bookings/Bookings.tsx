@@ -21,9 +21,25 @@ export const Bookings: React.FC = () => {
         }
 
         getBookings(JSON.parse(localStorage.getItem('loggedInAs') as string)).then((data) => {
+            // Sets all bookings
             setAllBookings(data);
+
+            // Filters data to find upcoming bookings
+            let upcomingBookings = data.filter(function(booking: any) {
+                return new Date(booking.arrival_date) > new Date();
+            });
+
+            setUpcomingBookings(upcomingBookings);
+
+            let previousBookings = data.filter(function(booking: any) {
+                return new Date(booking.arrival_date) < new Date();
+            });
+            setPreviousBookings(previousBookings);
+
         });
-    });
+    }, []);
+    
+    console.table('upcoming bookings: ', upcomingBookings);
 
     return (
         <section id="bookings" className="main-section--card text-start">
