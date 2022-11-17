@@ -67,9 +67,10 @@ export const CompareHotels: React.FC = (): any => {
                 if ((document.querySelector('#arrivalDate') as HTMLInputElement).value && (document.querySelector('#departureDate') as HTMLInputElement).value) {
                     // Creates a booking
                     createBooking(hotel?.hotel_id, JSON.parse(localStorage.getItem('loggedInAs') as any), new Date((document.querySelector('#arrivalDate') as HTMLInputElement).value),
-                        new Date((document.querySelector('#departureDate') as HTMLInputElement).value));
+                        new Date((document.querySelector('#departureDate') as HTMLInputElement).value), (hotel?.hotel_name as string));
                     // Makes error message invisible
                     (document.querySelector('.error') as HTMLElement).style.display = 'none';
+                    navigate('/bookings');
                 }
                 else {
                     // Makes error message visible
