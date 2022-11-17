@@ -146,3 +146,15 @@ h3 {
     background-color: var(--secondary-bg-colour);
     color: #fff;
 }
+
+.update-button-secondary {
+    width: 60%;
+    outline: 0;
+    border-radius: 0;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid rgb(210, 210, 210);
+    background-color: var(--secondary-bg-colour);
+    cursor: pointer;  
+    color: #fff;
+}
