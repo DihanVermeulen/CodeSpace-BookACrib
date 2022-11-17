@@ -1,5 +1,5 @@
 import '../../utils/utils.css';
-import confirm from '../../assets/icons/confirm.svg';
+import cancel from '../../assets/icons/cancel.svg';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/axios';
 
@@ -30,14 +30,37 @@ export const UpdateProfile: React.FC = () => {
         });
     }
 
+    const handleSubmit = () => {
+        let username = (document.querySelector('#update-username') as HTMLInputElement).value;
+        let password = (document.querySelector('#update-password') as HTMLInputElement).value;
+        let confirmPassword = (document.querySelector('#update-password-confirm') as HTMLInputElement).value;
+
+        let passwordsMatch: boolean = false;
+        let usernameIsNotEmpty: boolean = false;
+
+        if (username.length) {
+            usernameIsNotEmpty = true;
+        }
+
+        console.log('password: ', password);
+        console.log('confirm password: ', confirmPassword);
+
+        if (password === confirmPassword) {
+            console.log('passwords match');
+            passwordsMatch = true;
+        }
+
+        if (passwordsMatch && usernameIsNotEmpty) {
+            updateProfile((document.querySelector('#update-username') as HTMLInputElement).value,
+                (document.querySelector('#update-password-confirm') as HTMLInputElement).value)
+                navigate('/profile');
+        }
+    }
+
     return (
         <section id="update-profile" className="main-section--card color-black">
             <div className='flex-col align-center'>
-                <img className='confirm-button' src={confirm} alt='confirm' onClick={() => {
-                    updateProfile((document.querySelector('#update-username') as HTMLInputElement).value,
-                        (document.querySelector('#update-password-confirm') as HTMLInputElement).value,
-                    );
-                }} />
+                <img className='confirm-button' src={cancel} alt='confirm' onClick={() => { navigate('/profile') }} />
                 <div className='group color-black text-center justify-center'>
                     <input id='update-username' autoFocus className="input color-black" type="text" required />
                     <span className="highlight"></span>
@@ -56,7 +79,8 @@ export const UpdateProfile: React.FC = () => {
                     <span className="bar"></span>
                     <label className="label color-black">Confirm Password</label>
                 </div>
+                <button className='update-button-secondary' onClick={handleSubmit}>Update</button>
             </div>
-        </section>
+        </section >
     )
 }
