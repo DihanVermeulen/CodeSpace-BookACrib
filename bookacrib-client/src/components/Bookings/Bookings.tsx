@@ -51,12 +51,16 @@ export const Bookings: React.FC = () => {
                     <th>Check in</th>
                     <th>Check out</th>
                 </tr>
-                <tr>
-                    <td>The silo</td>
-                    <td>2022-09-23</td>
-                    <td>2022-09-24</td>
-                    <td>2022-09-25</td>
-                </tr>
+                {upcomingBookings.map((booking, key) => {
+                    return (
+                        <tr key={key}>
+                            <td>{booking.hotel_name}</td>
+                            <td>{booking.created}</td>
+                            <td>{booking.arrival_date}</td>
+                            <td>{booking.departure_date}</td>
+                        </tr>
+                    )
+                })}
             </table>
             <h2>Previous bookings</h2>
         </section>
