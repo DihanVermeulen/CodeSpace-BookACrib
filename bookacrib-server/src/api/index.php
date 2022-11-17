@@ -233,6 +233,25 @@ $app->post('/booking', function (Request $request, Response $response) {
     }
 });
 
+// Gets all bookings for requested user
+$app->get('/bookings', function (Request $request) {
+    require_once('../dbconn/dbconn.php');
+    $requestData = $request->getQueryParams();
+
+    $user_id = $requestData['user_id'];
+
+    $query = "SELECT * FROM bookings WHERE user_id = '$user_id'";
+
+    $result = $db_connection->query($query);
+
+    while($row = $result->fetch_assoc()) {
+        $response[] = $row; 
+    }
+
+    echo json_encode($response);
+});
+
+// =======================Profile=====================================
 $app->put('/update-profile', function (Request $request, Response $response) {
     require_once('../dbconn/dbconn.php');
 
