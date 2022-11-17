@@ -87,8 +87,8 @@ export const calculateNumDays = (date1: Date, date2: Date) => {
  * @param arrivalDate 
  * @param departureDate 
  */
-export const createBooking = (hotelId: any, userId: any, arrivalDate: any, departureDate: any) => {
-    let booking = new Booking(hotelId, userId, arrivalDate, departureDate);
+export const createBooking = (hotelId: any, userId: any, arrivalDate: any, departureDate: any, hotelName: string) => {
+    let booking = new Booking(hotelId, userId, arrivalDate, departureDate, hotelName);
 
     console.log(booking.getBooking());
 
