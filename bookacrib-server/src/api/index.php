@@ -133,48 +133,45 @@ $app->get('/login', function (Request $request) {
     }
 });
 
-$app->post(
-    '/login',
-    function (Request $request, Response $response) {
-        require_once('../dbconn/dbconn.php');
-        $update = $request->getParsedBody();
+$app->post('/login', function (Request $request, Response $response) {
+    require_once('../dbconn/dbconn.php');
+    $update = $request->getParsedBody();
 
-        $query = "INSERT INTO sessions (session_state, user_id, created, ip) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO sessions (session_state, user_id, created, ip) VALUES (?, ?, ?, ?)";
 
+    $state_update = $update['user_update'];
+    $user_id = $update['user_id'];
+
+    try {
+        // Preparing query for binding
+        $stmt = $db_connection->prepare($query);
+
+        // Variables that goes into query
+        $time = time();
+        $ip = $_SERVER['REMOTE_ADDR'];
         $state_update = $update['user_update'];
         $user_id = $update['user_id'];
 
-        try {
-            // Preparing query for binding
-            $stmt = $db_connection->prepare($query);
+        // Binding variables and executing query
+        $stmt->bind_param('ssss', $state_update, $user_id, $time, $ip);
+        $stmt->execute();
 
-            // Variables that goes into query
-            $time = time();
-            $ip = $_SERVER['REMOTE_ADDR'];
-            $state_update = $update['user_update'];
-            $user_id = $update['user_id'];
+        // Returns if success
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(200);
 
-            // Binding variables and executing query
-            $stmt->bind_param('ssss', $state_update, $user_id, $time, $ip);
-            $stmt->execute();
-
-            // Returns if success
-            return $response
-                ->withHeader('content-type', 'application/json')
-                ->withStatus(200);
-
-            // Returns if fail
-        } catch (PDOException $e) {
-            $error = array(
-                "message" => $e->getMessage()
-            );
-            $response->getBody()->write(json_encode($error));
-            return $response
-                ->withHeader('content-type', 'application/json')
-                ->withStatus(500);
-        }
+        // Returns if fail
+    } catch (PDOException $e) {
+        $error = array(
+            "message" => $e->getMessage()
+        );
+        $response->getBody()->write(json_encode($error));
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(500);
     }
-);
+});
 
 $app->get('/session', function (Request $request) {
     require_once('../dbconn/dbconn.php');
