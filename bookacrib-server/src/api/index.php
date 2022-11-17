@@ -14,6 +14,9 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
 header('Access-Control-Allow-Methods: GET,PUT,POST,DELETE,PATCH,OPTIONS');
 
+// ======================Hotels==========================
+
+// Gets all hotels from database
 $app->get('/hotels', function () {
     require_once('../dbconn/dbconn.php');
     $query = "SELECT * FROM hotels";
@@ -26,6 +29,8 @@ $app->get('/hotels', function () {
 
     echo json_encode($response);
 });
+
+// ========================Users=============================
 
 // Post to create user and add into database
 $app->post('/register', function (Request $request, Response $response) {
@@ -95,6 +100,7 @@ $app->get('/find-user', function (Request $request) {
     echo json_encode($response);
 });
 
+// =====================Login========================
 $app->get('/login', function (Request $request) {
     require_once('../dbconn/dbconn.php');
     $data = $request->getQueryParams();
