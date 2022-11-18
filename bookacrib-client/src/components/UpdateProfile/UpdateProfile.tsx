@@ -52,9 +52,8 @@ export const UpdateProfile: React.FC = () => {
         }
 
         if (passwordsMatch && usernameIsNotEmpty) {
-            updateProfile((document.querySelector('#update-username') as HTMLInputElement).value,
-                (document.querySelector('#update-password-confirm') as HTMLInputElement).value)
-                navigate('/profile');
+            updateProfile(username, confirmPassword);
+            navigate('/profile');
         }
     }
 
