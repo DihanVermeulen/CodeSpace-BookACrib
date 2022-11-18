@@ -1,3 +1,4 @@
+import { exit } from "process";
 import { api } from "../api/axios";
 import { Booking } from "../model/Booking";
 
@@ -110,14 +111,13 @@ export const createBooking = (hotelId: any, userId: any, arrivalDate: any, depar
  * @returns 
  */
 export const getBookings = async (id: string) => {
-
     const request: any = await api.get('/bookings', {
         params: {
             user_id: id
         }
     })
 
-    const data = request.data;
+    const data = await request.data;
 
     return data;
 }
@@ -148,4 +148,14 @@ export const deleteProfile = (id: string) => {
             }
         })
         .then((res: any) => console.log(res));
+}
+
+export const deleteBooking = async (id: any) => {
+    const request: any = await api.delete('/delete-booking', {
+        data: {
+            bookingId: id
+        }
+    });
+
+    return request
 }
