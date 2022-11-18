@@ -90,7 +90,7 @@ export const Bookings: React.FC = () => {
                 <tbody>
                     {previousBookings.map((booking, key) => {
                         return (
-                            <tr key={key}>
+                            <tr id={booking.booking_id} key={key}>
                                 <td>{booking.hotel_name}</td>
                                 <td>{booking.created}</td>
                                 <td>{booking.arrival_date}</td>
