@@ -2,6 +2,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../api/axios";
 import { calculateNumDays, createBooking, fetchSearchParams, scrollPageToTop } from '../../utils/utils';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import './CompareHotels.css';
 
 interface IHotel {
