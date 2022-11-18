@@ -87,7 +87,7 @@ $app->get('/users', function () {
     echo json_encode($response);
 });
 
-$app->delete('/delete-user', function(Request $request) {
+$app->delete('/delete-user', function (Request $request) {
     require_once('../dbconn/dbconn.php');
 
     $request_data = $request->getParsedBody();
@@ -116,9 +116,9 @@ $app->delete('/delete-user', function(Request $request) {
 $app->get('/find-user', function (Request $request) {
     require_once('../dbconn/dbconn.php');
 
-    $requestData = $request->getQueryParams();
+    $request_data = $request->getQueryParams();
 
-    $user_id = $requestData['user_id'];
+    $user_id = $request_data['user_id'];
 
     $query = "SELECT user_name, user_email FROM users WHERE user_id = '$user_id'";
     $result = $db_connection->query($query);
@@ -206,8 +206,8 @@ $app->post('/login', function (Request $request, Response $response) {
 
 $app->get('/session', function (Request $request) {
     require_once('../dbconn/dbconn.php');
-    $requestData = $request->getQueryParams();
-    $user_id = $requestData['userId'];
+    $request_data = $request->getQueryParams();
+    $user_id = $request_data['userId'];
 
     $query = "SELECT session_state, user_id, MAX(created) AS most_recent_signin FROM sessions WHERE user_id ='$user_id'"; // Gets last session of user
 
@@ -227,17 +227,17 @@ $app->get('/session', function (Request $request) {
 $app->post('/booking', function (Request $request, Response $response) {
     require_once('../dbconn/dbconn.php');
 
-    $requestData = $request->getParsedBody();
+    $request_data = $request->getParsedBody();
 
     $query = "INSERT INTO bookings (hotel_name, hotel_id, created, user_id, arrival_date, departure_date) 
     VALUES (?, ?, ?, ?, ?, ?)";
 
-    $hotel_id = intval($requestData['hotelId']);
-    $date_created = $requestData['dateCreated'];
-    $user_id = $requestData['userId'];
-    $arrival_date = $requestData['arrivalDate'];
-    $departure_date = $requestData['departureDate'];
-    $hotel_name = $requestData['hotelName'];
+    $hotel_id = intval($request_data['hotelId']);
+    $date_created = $request_data['dateCreated'];
+    $user_id = $request_data['userId'];
+    $arrival_date = $request_data['arrivalDate'];
+    $departure_date = $request_data['departureDate'];
+    $hotel_name = $request_data['hotelName'];
 
     try {
         // Preparing query for binding
@@ -267,28 +267,58 @@ $app->post('/booking', function (Request $request, Response $response) {
 // Gets all bookings for requested user
 $app->get('/bookings', function (Request $request) {
     require_once('../dbconn/dbconn.php');
-    $requestData = $request->getQueryParams();
+    $request_data = $request->getQueryParams();
 
-    $user_id = $requestData['user_id'];
+    $user_id = $request_data['user_id'];
 
     $query = "SELECT * FROM bookings WHERE user_id = '$user_id'";
 
     $result = $db_connection->query($query);
 
-    while($row = $result->fetch_assoc()) {
-        $response[] = $row; 
+    while ($row = $result->fetch_assoc()) {
+        $response[] = $row;
     }
 
     echo json_encode($response);
+});
+
+$app->delete('/delete-booking', function (Request $request, Response $response) {
+    require_once('../dbconn/dbconn.php');
+
+    $request_data = $request->getParsedBody();
+
+    $query = "DELETE FROM bookings WHERE booking_id = ?";
+
+    $booking_id = intval($request_data['bookingId']);
+
+    try {
+        $stmt = $db_connection->prepare($query);
+
+        $stmt->bind_param('i', $booking_id);
+
+        $stmt->execute();
+
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(200);
+    } catch (PDOException $e) {
+        $error = array(
+            "message" => $e->getMessage()
+        );
+        $response->getBody()->write(json_encode($error));
+        return $response
+            ->withHeader('content-type', 'application/json')
+            ->withStatus(500);
+    }
 });
 
 // =======================Profile=====================================
 $app->put('/update-profile', function (Request $request, Response $response) {
     require_once('../dbconn/dbconn.php');
 
-    $requestData = $request->getParsedBody();
+    $request_data = $request->getParsedBody();
 
-    $new_user = new User($requestData['new_username'], $requestData['user_email'], $requestData['new_password'], "customer");
+    $new_user = new User($request_data['new_username'], $request_data['user_email'], $request_data['new_password'], "customer");
 
     $new_user_object = $new_user->createUser();
 
