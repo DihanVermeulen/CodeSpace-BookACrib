@@ -1,6 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import update from '../../assets/icons/update.svg';
 import './Profile.css';
+import { useEffect, useState } from 'react';
+import { api } from '../../api/axios';
+import { getProfile } from '../../utils/utils';
+
+interface User {
+    user_name: string,
+    user_email: any
+}
 
 export const Profile: React.FC = () => {
     const [user, setUser] = useState<User>();
