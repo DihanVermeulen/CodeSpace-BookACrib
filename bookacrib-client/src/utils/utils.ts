@@ -121,3 +121,21 @@ export const getBookings = async (id: string) => {
 
     return data;
 }
+
+/**
+ * Gets user profile
+ * @param id 
+ * @returns 
+ */
+export const getProfile = async (id: string) => {
+
+    const request: any = await api.get('/find-user', {
+        params: {
+            user_id: id
+        }
+    })
+
+    const data = request.data;
+
+    return data;
+}
