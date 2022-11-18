@@ -60,7 +60,7 @@ export const LoginCard: React.FC<props> = ({ setState }: props) => {
                     <span className="bar"></span>
                     <label className='label'>Password</label>
                 </div>
-                <input type='submit' value='Login' />
+                <input className='tertiary-button' type='submit' value='Login' />
             </form>
             <p>Need an account?</p>
             <a className='link' onClick={() => { setState(false) }}>Sign up</a>
