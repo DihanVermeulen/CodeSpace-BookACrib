@@ -139,7 +139,7 @@ h3 {
     margin: 5px;
     border: 1px solid rgb(210, 210, 210);
     background-color: transparent;
-    cursor: pointer;  
+    cursor: pointer;
 }
 
 .primary-button:hover {
@@ -147,8 +147,8 @@ h3 {
     color: #fff;
 }
 
-.update-button-secondary {
-    width: 60%;
+.tertiary-button {
+    width: 50%;
     outline: 0;
     border-radius: 0;
     padding: 10px;
@@ -164,7 +164,7 @@ h3 {
 }
 
 .delete-button {
-    width: 60%;
+    width: 50%;
     outline: 0;
     border-radius: 0;
     padding: 10px;
