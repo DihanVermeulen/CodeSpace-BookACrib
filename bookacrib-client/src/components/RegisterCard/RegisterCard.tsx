@@ -1,12 +1,15 @@
 import '../../utils/utils.css';
 import { api } from '../../api/axios';
 import { register } from '../../utils/utils';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 interface props {
     setState: React.Dispatch<React.SetStateAction<any>>
 }
 
 export const RegisterCard: React.FC<props> = ({ setState }) => {
+    const navigate = useNavigate();
+
     const handleSubmit = (event: any) => {
         event.preventDefault();
         console.log('clicked submit');
