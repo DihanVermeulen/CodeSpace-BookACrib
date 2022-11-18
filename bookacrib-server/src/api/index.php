@@ -87,6 +87,32 @@ $app->get('/users', function () {
     echo json_encode($response);
 });
 
+$app->delete('/delete-user', function(Request $request) {
+    require_once('../dbconn/dbconn.php');
+
+    $request_data = $request->getParsedBody();
+
+    $user_id = $request_data['userId'];
+
+    $query = "DELETE FROM users WHERE user_id = ?";
+
+    try {
+        $stmt = $db_connection->prepare($query);
+
+        $stmt->bind_param('s', $user_id);
+
+        $stmt->execute();
+
+        return $response;
+    } catch (PDOException $e) {
+        $error = array(
+            "message" => $e->getMessage()
+        );
+        $response->getBody()->write(json_encode($error));
+        return $response;
+    }
+});
+
 $app->get('/find-user', function (Request $request) {
     require_once('../dbconn/dbconn.php');
 
