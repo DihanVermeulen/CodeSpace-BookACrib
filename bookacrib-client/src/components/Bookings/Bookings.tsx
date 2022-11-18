@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { api } from "../../api/axios";
 import './Bookings.css';
 import { getBookings } from '../../utils/utils';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 interface IHotels {
     hotel_name: string,
