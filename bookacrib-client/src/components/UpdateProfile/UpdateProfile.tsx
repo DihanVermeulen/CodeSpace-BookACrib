@@ -2,6 +2,7 @@ import '../../utils/utils.css';
 import cancel from '../../assets/icons/cancel.svg';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/axios';
+import { deleteProfile } from '../../utils/utils';
 
 export const UpdateProfile: React.FC = () => {
     const navigate = useNavigate();
@@ -79,7 +80,12 @@ export const UpdateProfile: React.FC = () => {
                     <span className="bar"></span>
                     <label className="label color-black">Confirm Password</label>
                 </div>
-                <button className='update-button-secondary' onClick={handleSubmit}>Update</button>
+                <button className='tertiary-button' onClick={handleSubmit}>Update</button>
+                <button className='delete-button' onClick={() => {
+                    deleteProfile(JSON.parse(localStorage.getItem('loggedInAs') as string));
+                    localStorage.removeItem('loggedInAs');
+                    navigate('/');
+            }}>Delete</button>
             </div>
         </section >
     )
