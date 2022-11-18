@@ -1,7 +1,7 @@
 import React from 'react';
 import './LoginCard.css';
 import '../../utils/utils.css';
-import { login } from '../../utils/utils';
+import { login } from '../../utils/functions';
 import { api } from '../../api/axios';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,6 +1,6 @@
 import '../../utils/utils.css';
 import { api } from '../../api/axios';
-import { register } from '../../utils/utils';
+import { register } from '../../utils/functions';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 interface props {

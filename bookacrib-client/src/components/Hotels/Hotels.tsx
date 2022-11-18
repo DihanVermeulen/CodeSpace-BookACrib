@@ -1,7 +1,7 @@
 import { JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../api/axios";
-import { scrollPageToTop } from "../../utils/utils";
+import { scrollPageToTop } from "../../utils/functions";
 
 export const Hotels = () => {
     const [hotels, setHotels] = useState<any[]>();
