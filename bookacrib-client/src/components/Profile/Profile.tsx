@@ -17,8 +17,8 @@ export const Profile: React.FC = () => {
             <img className='update-button' src={update} alt="update" onClick={() => {
                 navigate('/update-profile');
             }} />
-            <h2>Username</h2>
-            <h3>Email</h3>
+            <h2>{user?.user_name}</h2>
+            <h3>{user?.user_email}</h3>
             <div className='flex-row justify-center'>
                 <div className='badge'>Current bookings: </div>
                 <div className='badge'>Previous bookings: </div>
