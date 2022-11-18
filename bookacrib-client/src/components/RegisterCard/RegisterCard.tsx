@@ -23,6 +23,7 @@ export const RegisterCard: React.FC<props> = ({ setState }) => {
             userRole: "customer"
         });
         register(data);
+        navigate('/');
     }
 
     return (
