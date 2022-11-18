@@ -2,7 +2,7 @@ import '../../utils/utils.css';
 import cancel from '../../assets/icons/cancel.svg';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/axios';
-import { deleteProfile } from '../../utils/utils';
+import { deleteProfile } from '../../utils/functions';
 
 export const UpdateProfile: React.FC = () => {
     const navigate = useNavigate();
