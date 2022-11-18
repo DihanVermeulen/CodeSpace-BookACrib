@@ -103,3 +103,21 @@ export const createBooking = (hotelId: any, userId: any, arrivalDate: any, depar
         .then(res => console.log(res))
         .catch(err => console.log(err));
 }
+
+/**
+ * Gets all bookings from user
+ * @param id 
+ * @returns 
+ */
+export const getBookings = async (id: string) => {
+
+    const request: any = await api.get('/bookings', {
+        params: {
+            user_id: id
+        }
+    })
+
+    const data = request.data;
+
+    return data;
+}
