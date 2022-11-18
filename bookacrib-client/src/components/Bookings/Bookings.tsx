@@ -64,11 +64,12 @@ export const Bookings: React.FC = () => {
                 <tbody>
                     {upcomingBookings.map((booking, key) => {
                         return (
-                            <tr key={key}>
+                            <tr id={booking.booking_id} key={key}>
                                 <td>{booking.hotel_name}</td>
                                 <td>{booking.created}</td>
                                 <td>{booking.arrival_date}</td>
                                 <td>{booking.departure_date}</td>
+                                <td><button onClick={deleteBooking}>Delete</button></td>
                             </tr>
                         )
                     })}
