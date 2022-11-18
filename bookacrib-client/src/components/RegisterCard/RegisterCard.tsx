@@ -48,7 +48,7 @@ export const RegisterCard: React.FC<props> = ({ setState }) => {
                     <span className="bar"></span>
                     <label className="label">password</label>
                 </div>
-                <input type='submit' value='Create Account' />
+                <input type='submit' value='Create Account' className='tertiary-button' />
             </form>
         </section>
     )
