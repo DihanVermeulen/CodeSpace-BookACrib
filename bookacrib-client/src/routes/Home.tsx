@@ -2,7 +2,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import '../styles.css';
 import logo from '../assets/images/logo.png';
 import { useEffect, useState } from "react";
-import { getLastSession } from "../utils/utils";
+import { getLastSession } from "../utils/functions";
 
 export const Home = () => {
     const [loggedInAs, setLoggedInAs] = useState(null);
