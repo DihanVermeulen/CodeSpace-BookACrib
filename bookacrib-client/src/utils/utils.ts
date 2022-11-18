@@ -139,3 +139,13 @@ export const getProfile = async (id: string) => {
 
     return data;
 }
+
+export const deleteProfile = (id: string) => {
+    api.delete(`/delete-user`,
+        {
+            data: {
+                userId: id
+            }
+        })
+        .then((res: any) => console.log(res));
+}
