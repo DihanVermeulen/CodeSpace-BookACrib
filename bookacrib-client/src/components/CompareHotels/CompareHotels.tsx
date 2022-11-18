@@ -1,7 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../api/axios";
-import { calculateNumDays, createBooking, fetchSearchParams, scrollPageToTop } from '../../utils/utils';
+import { calculateNumDays, createBooking, fetchSearchParams, scrollPageToTop } from '../../utils/functions';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './CompareHotels.css';
@@ -25,13 +25,27 @@ export const CompareHotels: React.FC = (): any => {
     // Sets hotel state to hotel specified in search params
     useEffect(() => {
         let hotelIndex: any = fetchSearchParams(searchParams, "hotel"); // Gets search paramaters
-        api.get('/hotels')
-            .then((response): any => {
-                let selectedHotel = response.data[hotelIndex];
-                setHotel(selectedHotel);
-                setAllHotels(response.data);
+        const getHotels = async () => {
+            const request: any = await api.get('/hotels');
+
+            const data = request.data;
+
+            return data;
+        }
+        getHotels()
+            .then((res: any) => {
+                console.log(res);
+                setAllHotels(res);
+                setHotel(res[hotelIndex]);
             });
-    }, [hotel])
+    }, [searchParams])
+
+    useEffect(() => {
+        let hotelIndex: any = fetchSearchParams(searchParams, "hotel"); // Gets search paramaters
+        setHotel(allHotels[hotelIndex]);
+
+    }, [searchParams, hotel])
+
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
