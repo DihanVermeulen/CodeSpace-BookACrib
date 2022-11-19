@@ -1,6 +1,7 @@
 :root {
     --primary-bg-colour: #262626;
     --secondary-bg-colour: #515151;
+    --tertiary-bg-colour: #fee599;
 }
 
 * {
@@ -75,6 +76,22 @@ h3 {
     background-color: var(--primary-bg-colour);
     min-height: 10vh;
     color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.home-page--footer p {
+    padding: 0;
+    margin: 5px;
+}
+
+.home-page--footer-logo {
+    width: 10rem;
+}
+
+.home-page--footer-icon {
+    width: 3rem;
+    cursor: pointer;
 }
 
 .main-section--card {
