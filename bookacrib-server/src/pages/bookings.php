@@ -7,7 +7,7 @@ try {
     $result = $db_connection->query($get_all_bookings_query);
 
     while ($row = $result->fetch_assoc()) {
-        $response[] = $row;
+        $bookingsResponse[] = $row;
     }
 } catch (PDOException $err) {
     echo $err;
@@ -28,7 +28,7 @@ try {
 
     <tbody>
         <?php
-        foreach ($response as $row) {
+        foreach ($bookingsResponse as $row) {
             echo "<tr>
                     <td>" . $row['booking_id'] . "</td>
                     <td>" . $row['hotel_id'] . "</td>
