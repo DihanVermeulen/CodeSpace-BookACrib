@@ -13,3 +13,32 @@ try {
     echo $err;
 }
 ?>
+<table class='highlight centered striped'>
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Hotel ID</th>
+            <th>User ID</th>
+            <th>Hotel</th>
+            <th>Date Created</th>
+            <th>Arrival Date</th>
+            <th>Departure Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php
+        foreach ($response as $row) {
+            echo "<tr>
+                    <td>" . $row['booking_id'] . "</td>
+                    <td>" . $row['hotel_id'] . "</td>
+                    <td>" . $row['user_id'] . "</td>
+                    <td>" . $row['hotel_name'] . "</td>
+                    <td>" . explode(' ', $row['created'])[0] . "</td>
+                    <td>" . explode(' ', $row['arrival_date'])[0] . "</td>
+                    <td>" . explode(' ', $row['departure_date'])[0] . "</td>
+                </tr>";
+        }
+        ?>
+    </tbody>
+</table>
