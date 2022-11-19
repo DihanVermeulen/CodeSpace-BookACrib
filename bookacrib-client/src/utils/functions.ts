@@ -1,4 +1,3 @@
-import { exit } from "process";
 import { api } from "../api/axios";
 import { Booking } from "../model/Booking";
 
@@ -60,13 +59,18 @@ export const register = (data: any) => {
  * Gets last session of user
  * @param id 
  */
-export const getLastSession = (id: string): any => {
-    api.get('/session', {
+export const getLastSession = async (id: string) => {
+    const request: any = await api.get('/session', {
         params: {
             userId: id
         }
     })
-        .then(res => console.log(res));
+
+    const data = await request.data;
+
+    return {
+        payload: data
+    }
 }
 
 /**
