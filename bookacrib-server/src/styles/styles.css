@@ -11,3 +11,7 @@ body {
 .logo {
     width: 15rem;
 }
+
+th, td {
+    border-bottom: 1px solid rgb(191, 191, 191);
+}
