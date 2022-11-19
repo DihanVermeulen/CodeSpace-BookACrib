@@ -36,11 +36,22 @@
     </nav>
 
 
-    <div id="users" class="col s12"><?php
-                                    include_once('src/pages/users.php');
-                                    ?></div>
-    <div id="bookings" class="col s12">Test 2</div>
-    <div id="hotels" class="col s12">Test 4</div>
+    <div id="users" class="col s12">
+        <?php
+        include_once('src/pages/users.php');
+        ?>
+    </div>
+    <div id="bookings" class="col s12">
+        <?php
+        include_once('src/pages/bookings.php');
+        ?>
+    </div>
+    <div id="hotels" class="col s12">
+        <?php
+        include_once('src/pages/hotels.php');
+        ?>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <script>
         $(document).ready(function() {
