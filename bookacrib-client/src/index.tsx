@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 import { Home } from './routes/Home';
 import { Login } from './routes/Login';
 import { CompareHotels } from './components/CompareHotels/CompareHotels';
@@ -64,9 +65,17 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
+  <>
     <RouterProvider router={router} />
-  </React.StrictMode>
+    <Toaster toastOptions={{
+                className: '',
+                style: {
+                    border: '1px solid #713200',
+                    padding: '16px',
+                    color: '#713200',
+                },
+            }} />
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
