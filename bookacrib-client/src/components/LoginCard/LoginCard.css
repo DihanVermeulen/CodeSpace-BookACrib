@@ -30,13 +30,13 @@
 .input:valid~.label {
     top: -1px;
     font-size: 12px;
-    color: #f4dc94;
+    color: var(--tertiary-bg-colour);
 }
 
 .login-page--card h1 {
     font-size: 32px;
     margin: 10px;
-    color: #f4dc94;
+    color: var(--tertiary-bg-colour);
 }
 
 .input {
@@ -76,7 +76,7 @@
     width: 0;
     bottom: 3px;
     position: absolute;
-    background: #f4dc94;
+    background: var(--tertiary-bg-colour);
     transition: 0.3s ease all;
     -moz-transition: 0.3s ease all;
     -webkit-transition: 0.3s ease all;
@@ -117,7 +117,7 @@
 /* ANIMATIONS ================ */
 @-webkit-keyframes inputHighlighter {
     from {
-        background: #f4dc94;
+        background: var(--tertiary-bg-colour);
     }
 
     to {
@@ -128,7 +128,7 @@
 
 @-moz-keyframes inputHighlighter {
     from {
-        background: #f4dc94;
+        background: var(--tertiary-bg-colour);
     }
 
     to {
@@ -139,7 +139,7 @@
 
 @keyframes inputHighlighter {
     from {
-        background: #f4dc94;
+        background: var(--tertiary-bg-colour);
     }
 
     to {
