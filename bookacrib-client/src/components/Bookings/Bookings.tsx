@@ -5,20 +5,22 @@ import { getBookings, deleteBooking } from '../../utils/functions';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import '../../utils/utils.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
-interface IHotels {
-    hotel_name: string,
-
-}
-
-export const Bookings: React.FC = () => {
+export const Bookings: React.FC = (): JSX.Element => {
     const [allBookings, setAllBookings] = useState<any[]>([]);
     const [upcomingBookings, setUpcomingBookings] = useState<any[]>([]);
     const [previousBookings, setPreviousBookings] = useState<any[]>([]);
     const navigate = useNavigate();
+    const [loggedInAs]: any = useOutletContext(); // Uses context from outlet in Home component
 
     useEffect(() => {
+        // Checks is user is logged in 
+        // redirects to home if not
+        if (!loggedInAs) {
+            navigate('/hotels');
+        }
+
         getBookings(JSON.parse(localStorage.getItem('loggedInAs') as string)).then((data) => {
             // Sets all bookings
             if (data && Array.isArray(data)) {

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import update from '../../assets/icons/update.svg';
 import './Profile.css';
 import { useEffect, useState } from 'react';
@@ -16,8 +16,15 @@ export const Profile: React.FC = () => {
     const [previousBookings, setPreviousBookings] = useState<any[]>();
     const [upcomingBookings, setUpcomingBookings] = useState<any[]>();
     const navigate = useNavigate();
+    const [loggedInAs]: any = useOutletContext(); // Uses context from outlet in Home component
 
     useEffect(() => {
+        // Checks is user is logged in 
+        // redirects to home if not
+        if (!loggedInAs) {
+            navigate('/hotels');
+        }
+
         getProfile(JSON.parse(localStorage.getItem('loggedInAs') as any)).then((data) => {
             setUser(data[0]);
         });
