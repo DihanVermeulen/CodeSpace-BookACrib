@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . './../dbconn/dbconn.php';
+include_once __DIR__ . './../dbconn/dbconn.php';
 
 $get_all_bookings_query = "SELECT * FROM bookings";
 
