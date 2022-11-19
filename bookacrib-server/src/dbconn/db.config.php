@@ -16,7 +16,6 @@ class DbConfig
             die("Connection failed: " . $db_connection->connect_error);
 
         } else {
-            //echo "connected successfully";
             return $db_connection;
         }
     }
