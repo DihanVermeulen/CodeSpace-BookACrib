@@ -8,6 +8,10 @@
     <!-- Materialize css cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+    <!-- Link to materialize icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Custom stylesheet link -->
     <link rel="stylesheet" href="src\styles\styles.css">
 
     <!-- Materialize javascript cdn -->
