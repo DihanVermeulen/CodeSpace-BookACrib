@@ -1,10 +1,9 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../api/axios";
-import { calculateNumDays, createBooking, fetchSearchParams, scrollPageToTop } from '../../utils/functions';
+import { calculateNumDays, createBooking, fetchSearchParams, scrollPageToTop, showNotification } from '../../utils/functions';
 import 'reactjs-popup/dist/index.css';
 import './CompareHotels.css';
-import toast from 'react-hot-toast';
 
 interface IHotel {
     hotel_id: number,
@@ -66,8 +65,9 @@ export const CompareHotels: React.FC = (): any => {
                 new Date((document.querySelector('#departureDate') as HTMLInputElement).value), (hotel?.hotel_name as string));
             // Makes error message invisible
             (document.querySelector('.error') as HTMLElement).style.display = 'none';
-            window.location.reload();
+            showNotification("Created booking!");
             navigate('/bookings');
+            window.location.reload();
         }
         else {
             // Makes error message visible
