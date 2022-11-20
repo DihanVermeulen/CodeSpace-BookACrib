@@ -19,6 +19,7 @@ try {
             <th>User ID</th>
             <th>User Name</th>
             <th>User Email</th>
+            <th>User Password</th>
         </tr>
     </thead>
 
@@ -29,7 +30,8 @@ try {
                     <td>" . $row['user_id'] . "</td>
                     <td>" . $row['user_name'] . "</td>
                     <td>" . $row['user_email'] . "</td>
-                    </tr>";
+                    <td>" . $row['user_password'] . "</td>
+                </tr>";
         }
         ?>
     </tbody>
