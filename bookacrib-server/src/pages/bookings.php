@@ -1,7 +1,14 @@
 <?php
 include_once __DIR__ . './../dbconn/dbconn.php';
 
-$get_all_bookings_query = "SELECT * FROM bookings";
+// Sorts hotels according to column
+if (isset($_POST['asc_bookings_hotelName'])) {
+    $get_all_bookings_query = "SELECT * FROM bookings ORDER BY hotel_name ASC";
+} else if (isset($_POST['desc_bookings_hotelName'])) {
+    $get_all_bookings_query = "SELECT * FROM bookings ORDER BY hotel_name DESC";
+} else {
+    $get_all_bookings_query = "SELECT * FROM bookings";
+}
 
 try {
     $result = $db_connection->query($get_all_bookings_query);
