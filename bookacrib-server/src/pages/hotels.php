@@ -154,3 +154,35 @@ if (isset($_POST['submit_hotel'])) {
         }
     }
 }
+
+if (isset($_POST['hotel_update_submit'])) {
+    $hotel_id = $_POST['hotel_id_update_input'];
+    $hotel_name = $_POST['hotel_name_update_input'];
+    $hotel_rating = $_POST['hotel_rating_update_input'];
+    $hotel_rate = $_POST['hotel_rate_update_input'];
+    $hotel_image = ['la_residence', 'royal_malewena', 'the_silo'];
+
+    if(checkIfIDExists($hotelsResponse, $hotel_id, "hotel_id")) {
+        $hotel_update = new Hotel($hotel_name, $hotel_rating, $hotel_rate, $hotel_image);
+        $hotel_update_object = $hotel_update->getHotelObject();
+    
+        // Checks if values are empty
+        if (!(empty($hotel_update_object['hotel_name']) && empty($hotel_update_object['hotel_rating']) && empty($hotel_update_object['hotel_rate']))) {
+            $update_hotel_query = "UPDATE hotels set hotel_name = ?, hotel_rate = ?, hotel_rating = ? WHERE hotel_id = ?";
+    
+            try {
+                $stmt = $db_connection->prepare($update_hotel_query);
+                $stmt->bind_param('siii', $hotel_update_object['hotel_name'], $hotel_update_object['hotel_rate'], $hotel_update_object['hotel_rating'], $hotel_id);
+    
+                $stmt->execute();
+                echo "<meta http-equiv='refresh' content='0'>"; // Refreshes page
+            } catch (PDOException $err) {
+                echo "Error updating hotel: $err";
+            }
+        }
+    } else {
+        echo "id does not exist";
+    }
+
+
+}
