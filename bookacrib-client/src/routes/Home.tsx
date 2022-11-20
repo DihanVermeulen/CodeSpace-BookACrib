@@ -3,7 +3,7 @@ import '../styles.css';
 import logo from '../assets/images/logo.png';
 import github from '../assets/icons/github.svg';
 import { useEffect, useState } from "react";
-import { getLastSession } from "../utils/functions";
+import { getLastSession, showNotification } from "../utils/functions";
 import toast from 'react-hot-toast';
 
 export const Home = () => {
@@ -29,9 +29,6 @@ export const Home = () => {
         }
     }, [loggedInAs]);
 
-    // Shows toast
-    const showLogoutNotification = () => toast('Logged out');
-
     return (
         <div id="home-page">
 
@@ -49,7 +46,7 @@ export const Home = () => {
                     {loggedInAs && <li onClick={() => {
                         setLoggedInAs(null);
                         localStorage.removeItem('loggedInAs');
-                        showLogoutNotification();
+                        showNotification("Logged out");
                     }}>Logout</li>}
                     {!loggedInAs && <li onClick={() => {
                         navigate('/login&register');
