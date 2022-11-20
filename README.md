@@ -50,6 +50,7 @@ The password to the guest is guest, and the email is guest@guest.com.
 
 ### Disclaimer
 Some areas of the application is slow to update, so don't worry if the booking does not immediately show.
+Sometimes when the CMS is open alongside the client, bookings cannot be created.
 
 ### Credits 
 
