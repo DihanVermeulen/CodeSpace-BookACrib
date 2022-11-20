@@ -1,0 +1,51 @@
+.link {
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.flex-row {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.margin-5 {
+    margin: 5px;
+}
+
+.error {
+    color: red;
+    display: none;
+}
+
+.color-black {
+    color: #000 !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-start {
+    text-align: start;
+}

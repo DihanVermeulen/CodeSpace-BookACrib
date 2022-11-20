@@ -1,0 +1,197 @@
+:root {
+    --primary-bg-colour: #262626;
+    --secondary-bg-colour: #515151;
+    --tertiary-bg-colour: #fee599;
+}
+
+* {
+    overflow-x: hidden;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+#login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-bg-colour);
+    width: 100vw;
+    height: 100vh;
+}
+
+.home-page--main-header {
+    background-color: var(--primary-bg-colour);
+    display: flex;
+    justify-content: center;
+}
+
+.home-page--main-header--logo {
+    margin: 2rem;
+    width: 20rem;
+}
+
+.home-page--horisontal-navigation {
+    color: #fff;
+    background-color: var(--secondary-bg-colour);
+    display: flex;
+    justify-content: center;
+}
+
+.home-page--horisontal-navigation ul {
+    list-style-type: none;
+    display: flex;
+    margin: 10px;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 0;
+}
+
+.home-page--horisontal-navigation ul li {
+    cursor: pointer;
+}
+
+.home-page--horisontal-navigation ul li:hover {
+    text-decoration: underline;
+}
+
+.home-page--main-section {
+    min-height: 80vh;
+    background-image: url(assets/images/background_mobile.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-page--footer {
+    background-color: var(--primary-bg-colour);
+    min-height: 10vh;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.home-page--footer p {
+    padding: 0;
+    margin: 5px;
+}
+
+.home-page--footer-logo {
+    width: 10rem;
+}
+
+.home-page--footer-icon {
+    width: 3rem;
+    cursor: pointer;
+}
+
+.main-section--card {
+    text-align: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    font-family: 'grenge';
+    width: 100%;
+    min-height: 80vh;
+    margin: 10px;
+    padding: 10px;
+}
+
+.main-section--card-form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main-section--card-form-group input {
+    width: 10rem;
+}
+
+.main-section--card--hotel-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    color: #000;
+}
+
+.main-section--card--hotel-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    margin: 0 auto 10px auto;
+    padding: 5px;
+    width: 20rem;
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all .1s ease-in;
+}
+
+.main-section--card--hotel-card:hover {
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(0.99);
+    transition: all .1s ease-in;
+}
+
+.main-section--card--hotel-card img {
+    border-radius: 4px;
+    width: 100%;
+    height: 200px;
+}
+
+.primary-button {
+    outline: 0;
+    border-radius: 0;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid rgb(210, 210, 210);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.primary-button:hover {
+    background-color: var(--secondary-bg-colour);
+    color: #fff;
+}
+
+.tertiary-button {
+    width: 50%;
+    outline: 0;
+    border-radius: 0;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid rgb(210, 210, 210);
+    background-color: var(--secondary-bg-colour);
+    cursor: pointer;
+    color: #fff;
+}
+
+.tertiary-button:hover {
+    background-color: #777777;
+}
+
+.delete-button {
+    width: 50%;
+    outline: 0;
+    border-radius: 0;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid rgb(176, 176, 176);
+    background-color: rgb(174, 0, 0);
+    cursor: pointer;
+    color: #fff;
+}
+
+.delete-button:hover {
+    background-color: rgb(194, 0, 0);
+}
