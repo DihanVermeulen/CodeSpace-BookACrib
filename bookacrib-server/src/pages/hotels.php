@@ -25,6 +25,10 @@ try {
     echo "Error fetching resources: $err";
 }
 ?>
+<form method="POST">
+    <button class="btn waves-effect waves-light" type="submit" name="asc">Sort ASC<i class="material-icons right">send</i></button>
+    <button class="btn waves-effect waves-light" type="submit" name="desc">Sort DESC<i class="material-icons right">send</i></button>
+</form>
 <table class='highlight centered striped'>
     <thead>
         <tr>
