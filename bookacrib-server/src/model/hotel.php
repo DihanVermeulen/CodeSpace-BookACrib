@@ -15,7 +15,7 @@ class Hotel
         $this->hotel_image = $hotel_image;
     }
 
-    private function random_pic($filesArray)
+    private function randomPic($filesArray)
     {
         $file = array_rand($filesArray);
         return $filesArray[$file];
@@ -29,7 +29,7 @@ class Hotel
             "hotel_name"=> $this->hotel_name,
             "hotel_rating"=> intval($this->hotel_rating),
             "hotel_rate"=> intval($this->hotel_rate),
-            "hotel_image"=> self::BASE_IMAGE_URL . $this->hotel_image
+            "hotel_image"=> self::BASE_IMAGE_URL . $this->randomPic($this->hotel_image)
         );
     }
 
