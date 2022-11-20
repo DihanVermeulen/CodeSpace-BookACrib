@@ -2,9 +2,9 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../api/axios";
 import { calculateNumDays, createBooking, fetchSearchParams, scrollPageToTop } from '../../utils/functions';
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './CompareHotels.css';
+import toast from 'react-hot-toast';
 
 interface IHotel {
     hotel_id: number,
@@ -47,7 +47,7 @@ export const CompareHotels: React.FC = (): any => {
     }, [searchParams, hotel])
 
 
-    const handleSubmit = (event: any) => {
+    const handleCompareSubmit = (event: any) => {
         event.preventDefault();
         let arrivalDate = new Date((document.querySelector('#arrivalDate') as HTMLInputElement).value);
         let departureDate = new Date((document.querySelector('#departureDate') as HTMLInputElement).value);
@@ -59,13 +59,29 @@ export const CompareHotels: React.FC = (): any => {
         }
     }
 
+    const handleCreateBookingSubmit = () => {
+        if ((document.querySelector('#arrivalDate') as HTMLInputElement).value && (document.querySelector('#departureDate') as HTMLInputElement).value) {
+            // Creates a booking
+            createBooking(hotel?.hotel_id, JSON.parse(localStorage.getItem('loggedInAs') as any), new Date((document.querySelector('#arrivalDate') as HTMLInputElement).value),
+                new Date((document.querySelector('#departureDate') as HTMLInputElement).value), (hotel?.hotel_name as string));
+            // Makes error message invisible
+            (document.querySelector('.error') as HTMLElement).style.display = 'none';
+            window.location.reload();
+            navigate('/bookings');
+        }
+        else {
+            // Makes error message visible
+            (document.querySelector('.error') as HTMLElement).style.display = 'block';
+        }
+    }
+
     return (
         <section className="main-section--card">
             <p>Selected hotel: {hotel?.hotel_name}</p>
             <p>Rates p/d: R{hotel?.hotel_rate}</p>
             <p className="totalRate">Total Cost: R{totalDays * (hotel?.hotel_rate)}</p>
             <br />
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleCompareSubmit}>
                 <div className="flex-row justify-center">
                     <div className="main-section--card-form-group margin-5">
                         <label>Arrival Date</label>
@@ -79,20 +95,7 @@ export const CompareHotels: React.FC = (): any => {
                 <div className="error">Please enter dates</div>
                 <input className="primary-button" type="submit" value="Compare" />
             </form>
-            <button className="primary-button" onClick={() => {
-                if ((document.querySelector('#arrivalDate') as HTMLInputElement).value && (document.querySelector('#departureDate') as HTMLInputElement).value) {
-                    // Creates a booking
-                    createBooking(hotel?.hotel_id, JSON.parse(localStorage.getItem('loggedInAs') as any), new Date((document.querySelector('#arrivalDate') as HTMLInputElement).value),
-                        new Date((document.querySelector('#departureDate') as HTMLInputElement).value), (hotel?.hotel_name as string));
-                    // Makes error message invisible
-                    (document.querySelector('.error') as HTMLElement).style.display = 'none';
-                    navigate('/bookings');
-                }
-                else {
-                    // Makes error message visible
-                    (document.querySelector('.error') as HTMLElement).style.display = 'block';
-                }
-            }}>Make Booking</button>
+            <button className="primary-button" onClick={handleCreateBookingSubmit}>Make Booking</button>
 
             <hr />
 
