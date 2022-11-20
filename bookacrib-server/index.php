@@ -28,7 +28,7 @@ session_start();
     <nav class="nav-extended">
         <div class="nav-wrapper grey darken-3">
             <img class="logo" src="src/assets/images/logo.png" alt="logo">
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="sass.html">Login</a></li>
                 <li><a href="sass.html">Logout</a></li>
