@@ -7,21 +7,21 @@ ini_set('display_errors', 'on');
 
 // Sorts table according to columns
 if (isset($_POST['asc_hotelID'])) {
-    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_id asc";
+    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_id ASC";
 } else if (isset($_POST['desc_hotelID'])) {
-    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_id desc";
+    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_id DESC";
 } else if (isset($_POST['asc_hotelName'])) {
-    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_name asc";
+    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_name ASC";
 } else if (isset($_POST['desc_hotelName'])) {
-    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_name desc";
+    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_name DESC";
 } else if (isset($_POST['asc_hotelRating'])) {
-    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_rating desc";
+    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_rating ASC";
 } else if (isset($_POST['desc_hotelRating'])) {
-    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_rating desc";
+    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_rating DESC";
 } else if (isset($_POST['asc_hotelRate'])) {
-    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_rate desc";
+    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_rate ASC";
 } else if (isset($_POST['desc_hotelRate'])) {
-    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_rate desc";
+    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_rate DESC";
 } else {
     $get_all_hotels_query = "SELECT * FROM hotels";
 }
