@@ -1,5 +1,6 @@
 import { api } from "../api/axios";
 import { Booking } from "../model/Booking";
+import toast from 'react-hot-toast';
 
 /**
  * Fetches all parameters in search and returns as an array
@@ -162,4 +163,8 @@ export const deleteBooking = async (id: any) => {
     });
 
     return request
+}
+
+export const showNotification = (message: any) => {
+    toast(message);
 }
