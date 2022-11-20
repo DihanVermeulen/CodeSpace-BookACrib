@@ -166,6 +166,27 @@ try {
                 </div>
             </form>
         </div>
+
+        <h4>Delete hotel</h4>
+        <div class="row">
+            <form class="col s12" action="" method="POST">
+                <div class="row">
+                    <div class="input-field col s12 m4">
+                        <input id="hotel_id_delete_input" name="hotel_id_delete_input" type="number" class="validate" required>
+                        <label for="hotel_id_delete_input">*Hotel ID</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field center-align">
+                        <button id="hotel_delete_submit" type="submit" name="hotel_delete_submit" class="btn waves-effect waves-light">
+                            Delete
+                            <i class="material-icons right">delete</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
