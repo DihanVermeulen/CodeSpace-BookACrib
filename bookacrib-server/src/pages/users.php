@@ -2,9 +2,9 @@
 include_once __DIR__ . './../dbconn/dbconn.php';
 
 // Sorts table according to columns
-if(isset($_POST['asc_userName'])) {
+if (isset($_POST['asc_userName'])) {
     $get_all_users_query = "SELECT * FROM users ORDER BY user_name ASC";
-} else if(isset($_POST['desc_userName'])) {
+} else if (isset($_POST['desc_userName'])) {
     $get_all_users_query = "SELECT * FROM users ORDER BY user_name DESC";
 } else {
     $get_all_users_query = "SELECT * FROM users";
