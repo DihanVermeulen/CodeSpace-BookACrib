@@ -45,6 +45,9 @@ ___
 You also have access to an admin console. There you can view the bookings, users and hotels. You are also able to create, update and delete
 hotels if you wish.
 
+The password to the admin is admin, and the email is admin@admin.com.
+The password to the guest is guest, and the email is guest@guest.com.
+
 ### Disclaimer
 Some areas of the application is slow to update, so don't worry if the booking does not immediately show.
 
