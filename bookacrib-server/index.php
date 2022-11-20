@@ -72,6 +72,7 @@ session_start();
             $('.tabs').tabs();
             $('.dropdown-trigger').dropdown();
             $('.sidenav').sidenav();
+            $('.tooltipped').tooltip();
         });
     </script>
 </body>

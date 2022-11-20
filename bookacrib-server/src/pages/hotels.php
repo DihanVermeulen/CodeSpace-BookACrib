@@ -121,7 +121,7 @@ try {
 
                 <div class="row">
                     <div class="input-field center-align">
-                        <button id="hotel_submit" type="submit" name="submit_hotel" class="btn waves-effect waves-light">
+                        <button id="hotel_submit" type="submit" data-position="bottom" data-tooltip="Creates new hotel" name="submit_hotel" class="btn waves-effect waves-light tooltipped">
                             Create
                             <i class="material-icons right">send</i>
                         </button>
@@ -158,7 +158,7 @@ try {
 
                 <div class="row">
                     <div class="input-field center-align">
-                        <button id="hotel_update_submit" type="submit" name="hotel_update_submit" class="btn waves-effect waves-light">
+                        <button id="hotel_update_submit" type="submit" data-position="bottom" data-tooltip="Updates hotel" name="hotel_update_submit" class="btn waves-effect waves-light tooltipped">
                             Update
                             <i class="material-icons right">update</i>
                         </button>
@@ -179,7 +179,7 @@ try {
 
                 <div class="row">
                     <div class="input-field center-align">
-                        <button id="hotel_delete_submit" type="submit" name="hotel_delete_submit" class="btn waves-effect waves-light">
+                        <button id="hotel_delete_submit" type="submit" data-position="bottom" data-tooltip="Deletes hotel" name="hotel_delete_submit" class="btn waves-effect waves-light tooltipped">
                             Delete
                             <i class="material-icons right">delete</i>
                         </button>
