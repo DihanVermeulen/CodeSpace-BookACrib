@@ -247,6 +247,22 @@ if (isset($_POST['hotel_update_submit'])) {
     } else {
         echo "id does not exist";
     }
+}
 
+if (isset($_POST['hotel_delete_submit'])) {
+    $hotel_id = $_POST['hotel_id_delete_input'];
+    if (checkIfIDExists($hotelsResponse, $hotel_id, "hotel_id")) {
+        $delete_hotel_query = "DELETE FROM hotels WHERE hotel_id = ?";
 
+        try {
+            $stmt = $db_connection->prepare($delete_hotel_query);
+            $stmt->bind_param('i', $hotel_id);
+            $stmt->execute();
+            echo "<meta http-equiv='refresh' content='0'>"; // Refreshes page
+        } catch (PDOException $err) {
+            echo "Error deleting hotel: $err";
+        }
+    } else {
+        echo "id does not exist";
+    }
 }
