@@ -22,6 +22,8 @@ if (isset($_POST['asc_hotelID'])) {
     $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_rate ASC";
 } else if (isset($_POST['desc_hotelRate'])) {
     $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_rate DESC";
+} else if (isset($_POST['search_hotels_submit'])) {
+    $get_all_hotels_query = "SELECT * FROM hotels WHERE hotel_name LIKE '%" . $_POST['search_hotels_input'] . "%'";
 } else {
     $get_all_hotels_query = "SELECT * FROM hotels";
 }
@@ -30,13 +32,37 @@ if (isset($_POST['asc_hotelID'])) {
 try {
     $result = $db_connection->query($get_all_hotels_query);
 
-    while ($row = $result->fetch_assoc()) {
-        $hotelsResponse[] = $row;
+    if (mysqli_num_rows($result) == 0) {
+        echo "no records found";
+    } else {
+        while ($row = $result->fetch_assoc()) {
+            $hotelsResponse[] = $row;
+        }
     }
 } catch (PDOException $err) {
     echo "Error fetching resources: $err";
 }
 ?>
+
+<!-- Searchbar -->
+<div class="row">
+    <div class="valign-wrapper">
+        <div class="nav-wrapper col s4">
+            <form method="POST" action="<?= $_SERVER['PHP_SELF']; ?>">
+                <div class="input-field">
+                    <input id="search_hotels_input" type="search" name="search_hotels_input" required>
+                    <label class="label-icon" for="search_hotels_input"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+        </div>
+        <div class="col s8">
+            <button type="submit" class="btn-small waves-effect waves-light" name="search_hotels_submit">Search</button>
+        </div>
+        </form>
+    </div>
+</div>
+
+<!-- Table -->
 <table class='highlight centered striped'>
     <thead>
         <tr>
@@ -97,7 +123,6 @@ try {
 
 <div class="container">
     <div class="card-panel hoverable">
-
         <h4>Create new hotel</h4>
         <div class="row">
             <form class="col s12" action="" method="POST">

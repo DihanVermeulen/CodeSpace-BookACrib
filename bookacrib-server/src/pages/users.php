@@ -6,6 +6,8 @@ if (isset($_POST['asc_userName'])) {
     $get_all_users_query = "SELECT * FROM users ORDER BY user_name ASC";
 } else if (isset($_POST['desc_userName'])) {
     $get_all_users_query = "SELECT * FROM users ORDER BY user_name DESC";
+} else if (isset($_POST['search_users_submit'])) {
+    $get_all_users_query = "SELECT * FROM users WHERE user_name LIKE '%" . $_POST['search_users_input'] . "%'";
 } else {
     $get_all_users_query = "SELECT * FROM users";
 }
@@ -13,13 +15,35 @@ if (isset($_POST['asc_userName'])) {
 try {
     $result = $db_connection->query($get_all_users_query);
 
-    while ($row = $result->fetch_assoc()) {
-        $usersResponse[] = $row;
+    if (mysqli_num_rows($result) == 0) {
+        echo "no records found";
+    } else {
+        while ($row = $result->fetch_assoc()) {
+            $usersResponse[] = $row;
+        }
     }
 } catch (PDOException $err) {
     echo "Error fetching resources: $err";
 }
 ?>
+
+<!-- Searchbar -->
+<div class="row">
+    <div class="valign-wrapper">
+        <div class="nav-wrapper col s4">
+            <form method="POST" action="<?= $_SERVER['PHP_SELF']; ?>">
+                <div class="input-field">
+                    <input id="search_users_input" type="search" name="search_users_input" required>
+                    <label class="label-icon" for="search_users_input"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+        </div>
+        <div class="col s8">
+            <button type="submit" class="btn-small waves-effect waves-light" name="search_users_submit">Search</button>
+        </div>
+        </form>
+    </div>
+</div>
 
 <table class='highlight centered striped'>
     <thead>

@@ -6,6 +6,8 @@ if (isset($_POST['asc_bookings_hotelName'])) {
     $get_all_bookings_query = "SELECT * FROM bookings ORDER BY hotel_name ASC";
 } else if (isset($_POST['desc_bookings_hotelName'])) {
     $get_all_bookings_query = "SELECT * FROM bookings ORDER BY hotel_name DESC";
+} else if (isset($_POST['search_bookings_submit'])) {
+    $get_all_bookings_query = "SELECT * FROM hotels WHERE hotel_name LIKE '%" . $_POST['search_bookings_input'] . "%'";
 } else {
     $get_all_bookings_query = "SELECT * FROM bookings";
 }
@@ -13,13 +15,36 @@ if (isset($_POST['asc_bookings_hotelName'])) {
 try {
     $result = $db_connection->query($get_all_bookings_query);
 
-    while ($row = $result->fetch_assoc()) {
-        $bookingsResponse[] = $row;
+    if (mysqli_num_rows($result) == 0) {
+        echo "No records found";
+    } else {
+        while ($row = $result->fetch_assoc()) {
+            $bookingsResponse[] = $row;
+        }
     }
 } catch (PDOException $err) {
     echo $err;
 }
 ?>
+
+<!-- Searchbar -->
+<div class="row">
+    <div class="valign-wrapper">
+        <div class="nav-wrapper col s4">
+            <form method="POST" action="<?= $_SERVER['PHP_SELF']; ?>">
+                <div class="input-field">
+                    <input id="search_bookings_input" type="search" name="search_bookings_input" required>
+                    <label class="label-icon" for="search_bookings_input"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+        </div>
+        <div class="col s8">
+            <button type="submit" class="btn-small waves-effect waves-light" name="search_bookings_submit">Search</button>
+        </div>
+        </form>
+    </div>
+</div>
+
 <table class='highlight centered striped'>
     <thead>
         <tr>
