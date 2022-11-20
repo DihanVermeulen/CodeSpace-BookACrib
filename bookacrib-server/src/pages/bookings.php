@@ -26,7 +26,15 @@ try {
             <th>Booking ID</th>
             <th>Hotel ID</th>
             <th>User ID</th>
-            <th>Hotel</th>
+            <th>Hotel
+                <a class='dropdown-trigger btn' href='#' data-target='bookings_hotel_name_dropdown'>Sort</a>
+                <ul id='bookings_hotel_name_dropdown' class='dropdown-content'>
+                    <form method="POST">
+                        <button class="btn waves-effect waves-light" type="submit" name="asc_bookings_hotelName">ASC<i class="material-icons">arrow_upward</i></button>
+                        <button class="btn waves-effect waves-light" type="submit" name="desc_bookings_hotelName">DESC<i class="material-icons">arrow_downward</i></button>
+                    </form>
+                </ul>
+            </th>
             <th>Date Created</th>
             <th>Arrival Date</th>
             <th>Departure Date</th>
