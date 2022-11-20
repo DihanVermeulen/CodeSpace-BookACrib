@@ -41,7 +41,7 @@ export const LoginCard: React.FC<props> = ({ setState }: props) => {
                     navigate('/');
                 }
                 else {
-                    console.log('error in logging in');
+                    (document.querySelector('#loginErrorMessage') as HTMLElement).style.display = 'block';
                 }
             })
     }
