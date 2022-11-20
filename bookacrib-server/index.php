@@ -64,6 +64,7 @@ session_start();
     <script>
         $(document).ready(function() {
             $('.tabs').tabs();
+            $('.dropdown-trigger').dropdown();
         });
     </script>
 </body>
