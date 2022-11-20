@@ -1,5 +1,8 @@
 <?php
 include_once __DIR__ . './../dbconn/dbconn.php';
+include __DIR__ . './../includes/functions.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
 
 $get_all_hotels_query = "SELECT * FROM hotels";
 
