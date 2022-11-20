@@ -30,14 +30,14 @@ session_start();
             <img class="logo" src="src/assets/images/logo.png" alt="logo">
             <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html">Login</a></li>
-                <li><a href="sass.html">Logout</a></li>
+                <li><a href="src/pages/login.php">Login</a></li>
+                <li><a href="#">Logout</a></li>
             </ul>
         </div>
 
         <ul class="sidenav" id="mobile-menu">
-            <li><a href="sass.html">Login</a></li>
-            <li><a href="sass.html">Logout</a></li>
+            <li><a href="#login">Login</a></li>
+            <li><a href="#">Logout</a></li>
         </ul>
 
         <div class="nav-content">
