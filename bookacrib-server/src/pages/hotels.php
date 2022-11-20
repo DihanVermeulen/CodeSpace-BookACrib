@@ -197,7 +197,7 @@ if (isset($_POST['submit_hotel'])) {
     $hotel_rating = $_POST['hotel_rating_input'];
     $hotel_rate = $_POST['hotel_rate_input'];
     // Selects random image
-    $hotel_image = ['la_residence', 'royal_malewena', 'the_silo'];
+    $hotel_image = ['la_residence.jpg', 'royal_malewena.jpg', 'the_silo.jpg'];
 
     $hotel_create = new Hotel($hotel_name, $hotel_rating, $hotel_rate, $hotel_image);
     $hotel_create_object = $hotel_create->getHotelObject();
