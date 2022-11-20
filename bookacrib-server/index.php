@@ -36,9 +36,9 @@ session_start();
         </div>
         <div class="nav-content">
             <ul class="tabs tabs-transparent grey darken-3">
-                <li class="tab"><a href="#users">Users</a></li>
-                <li class="tab"><a href="#bookings">Bookings</a></li>
-                <li class="tab"><a href="#hotels">Hotels</a></li>
+                <li class="tab"><a href="#users" data-toggle="tab">Users</a></li>
+                <li class="tab"><a href="#bookings" data-toggle="tab">Bookings</a></li>
+                <li class="tab"><a href="#hotels" data-toggle="tab">Hotels</a></li>
             </ul>
         </div>
     </nav>
