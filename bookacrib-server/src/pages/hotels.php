@@ -210,14 +210,15 @@ if (isset($_POST['submit_hotel'])) {
         try {
             $stmt = $db_connection->prepare($insert_hotel_query);
             $stmt->bind_param('siis', $hotel_create_object['hotel_name'], $hotel_create_object['hotel_rate'], $hotel_create_object['hotel_rating'], $hotel_create_object['hotel_image']);
-
             $stmt->execute();
+            echo "<meta http-equiv='refresh' content='0'>"; // Refreshes page
         } catch (PDOException $err) {
             echo "Error inserting hotel: $err";
         }
     }
 }
 
+// Updates hotel with the id 
 if (isset($_POST['hotel_update_submit'])) {
     $hotel_id = $_POST['hotel_id_update_input'];
     $hotel_name = $_POST['hotel_name_update_input'];
