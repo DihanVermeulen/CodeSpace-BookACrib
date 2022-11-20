@@ -34,6 +34,12 @@ session_start();
                 <li><a href="sass.html">Logout</a></li>
             </ul>
         </div>
+
+        <ul class="sidenav" id="mobile-menu">
+            <li><a href="sass.html">Login</a></li>
+            <li><a href="sass.html">Logout</a></li>
+        </ul>
+
         <div class="nav-content">
             <ul class="tabs tabs-transparent grey darken-3">
                 <li class="tab"><a href="#users" data-toggle="tab">Users</a></li>
