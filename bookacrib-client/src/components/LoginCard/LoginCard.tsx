@@ -1,9 +1,10 @@
 import React from 'react';
 import './LoginCard.css';
 import '../../utils/utils.css';
-import { login } from '../../utils/functions';
+import { login, showNotification } from '../../utils/functions';
 import { api } from '../../api/axios';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 interface props {
     setState: React.Dispatch<React.SetStateAction<any>>
@@ -25,7 +26,7 @@ export const LoginCard: React.FC<props> = ({ setState }: props) => {
                 user_password: passwordInput.value
             }
         })
-            .then(res => {
+            .then((res: any) => {
                 let resId: any;
                 console.log(res.data);
                 if (res.data) {
@@ -36,6 +37,7 @@ export const LoginCard: React.FC<props> = ({ setState }: props) => {
                     console.log(resId);
                     login(resId, 1);
                     localStorage.setItem('loggedInAs', JSON.stringify(resId));
+                    showNotification('Logged in'); // Shows toast
                     navigate('/');
                 }
                 else {
