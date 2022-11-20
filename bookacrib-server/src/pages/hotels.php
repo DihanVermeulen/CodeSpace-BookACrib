@@ -1,10 +1,19 @@
 <?php
 include_once __DIR__ . './../dbconn/dbconn.php';
 include __DIR__ . './../includes/functions.php';
+include __DIR__ . './../model/hotel.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 
-$get_all_hotels_query = "SELECT * FROM hotels";
+if(isset($_POST['asc'])) {
+    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_name asc";
+} else if(isset($_POST['desc'])) {
+    $get_all_hotels_query = "SELECT * FROM hotels ORDER BY hotel_name desc";
+}
+else {
+    $get_all_hotels_query = "SELECT * FROM hotels";
+}
+
 
 try {
     $result = $db_connection->query($get_all_hotels_query);
