@@ -1,7 +1,14 @@
 <?php
 include_once __DIR__ . './../dbconn/dbconn.php';
 
-$get_all_users_query = "SELECT * FROM users";
+// Sorts table according to columns
+if(isset($_POST['asc_userName'])) {
+    $get_all_users_query = "SELECT * FROM users ORDER BY user_name ASC";
+} else if(isset($_POST['desc_userName'])) {
+    $get_all_users_query = "SELECT * FROM users ORDER BY user_name DESC";
+} else {
+    $get_all_users_query = "SELECT * FROM users";
+}
 
 try {
     $result = $db_connection->query($get_all_users_query);
