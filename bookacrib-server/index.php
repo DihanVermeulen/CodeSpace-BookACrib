@@ -71,6 +71,7 @@ session_start();
         $(document).ready(function() {
             $('.tabs').tabs();
             $('.dropdown-trigger').dropdown();
+            $('.sidenav').sidenav();
         });
     </script>
 </body>
