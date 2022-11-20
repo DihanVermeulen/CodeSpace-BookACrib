@@ -37,17 +37,45 @@ try {
     echo "Error fetching resources: $err";
 }
 ?>
-<form method="POST">
-    <button class="btn waves-effect waves-light" type="submit" name="asc">Sort ASC<i class="material-icons right">send</i></button>
-    <button class="btn waves-effect waves-light" type="submit" name="desc">Sort DESC<i class="material-icons right">send</i></button>
-</form>
 <table class='highlight centered striped'>
     <thead>
         <tr>
-            <th>Hotel ID</th>
-            <th>Hotel</th>
-            <th>Hotel Rating</th>
-            <th>Hotel Rate</th>
+            <th>Hotel ID
+                <a class='dropdown-trigger btn' href='#' data-target='hotel_id_dropdown'>Sort</a>
+                <ul id='hotel_id_dropdown' class='dropdown-content'>
+                    <form method="POST">
+                        <button class="btn waves-effect waves-light" type="submit" name="asc_hotelID">ASC<i class="material-icons">arrow_upward</i></button>
+                        <button class="btn waves-effect waves-light" type="submit" name="desc_hotelID">DESC<i class="material-icons">arrow_downward</i></button>
+                    </form>
+                </ul>
+            </th>
+            <th>Hotel
+                <a class='dropdown-trigger btn' href='#' data-target='hotel_name_dropdown'>Sort</a>
+                <ul id='hotel_name_dropdown' class='dropdown-content'>
+                    <form method="POST">
+                        <button class="btn waves-effect waves-light" type="submit" name="asc_hotelName">ASC<i class="material-icons">arrow_upward</i></button>
+                        <button class="btn waves-effect waves-light" type="submit" name="desc_hotelName">DESC<i class="material-icons">arrow_downward</i></button>
+                    </form>
+                </ul>
+            </th>
+            <th>Hotel Rating
+                <a class='dropdown-trigger btn' href='#' data-target='hotel_rating_dropdown'>Sort</a>
+                <ul id='hotel_rating_dropdown' class='dropdown-content'>
+                    <form method="POST">
+                        <button class="btn waves-effect waves-light" type="submit" name="asc_hotelRating">ASC<i class="material-icons">arrow_upward</i></button>
+                        <button class="btn waves-effect waves-light" type="submit" name="desc_hotelRating">DESC<i class="material-icons">arrow_downward</i></button>
+                    </form>
+                </ul>
+            </th>
+            <th>Hotel Rate
+                <a class='dropdown-trigger btn' href='#' data-target='hotel_rate_dropdown'>Sort</a>
+                <ul id='hotel_rate_dropdown' class='dropdown-content'>
+                    <form method="POST">
+                        <button class="btn waves-effect waves-light" type="submit" name="asc_hotelRate">ASC<i class="material-icons">arrow_upward</i></button>
+                        <button class="btn waves-effect waves-light" type="submit" name="desc_hotelRate">DESC<i class="material-icons">arrow_downward</i></button>
+                    </form>
+                </ul>
+            </th>
             <th>Image Location</th>
         </tr>
     </thead>
