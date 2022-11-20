@@ -20,11 +20,20 @@ try {
     echo "Error fetching resources: $err";
 }
 ?>
+
 <table class='highlight centered striped'>
     <thead>
         <tr>
             <th>User ID</th>
-            <th>User Name</th>
+            <th>User Name
+                <a class='dropdown-trigger btn' href='#' data-target='users_name_dropdown'>Sort</a>
+                <ul id='users_name_dropdown' class='dropdown-content'>
+                    <form method="POST">
+                        <button class="btn waves-effect waves-light" type="submit" name="asc_userName">ASC<i class="material-icons">arrow_upward</i></button>
+                        <button class="btn waves-effect waves-light" type="submit" name="desc_userName">DESC<i class="material-icons">arrow_downward</i></button>
+                    </form>
+                </ul>
+            </th>
             <th>User Email</th>
             <th>User Password</th>
         </tr>
