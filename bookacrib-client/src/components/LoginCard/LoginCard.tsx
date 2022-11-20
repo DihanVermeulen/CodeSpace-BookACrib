@@ -54,14 +54,15 @@ export const LoginCard: React.FC<props> = ({ setState }: props) => {
                     <input id='loginEmail' autoFocus className="input" type="text" required />
                     <span className="highlight"></span>
                     <span className="bar"></span>
-                    <label className="label">Email</label>
+                    <label className="label">*Email</label>
                 </div>
                 <div className='group'>
                     <input id='loginPassword' className='input' type="password" required />
                     <span className="highlight"></span>
                     <span className="bar"></span>
-                    <label className='label'>Password</label>
+                    <label className='label'>*Password</label>
                 </div>
+                <p id='loginErrorMessage' className='error'>Email or password is incorrect</p>
                 <input className='tertiary-button' type='submit' value='Login' />
             </form>
             <p>Need an account?</p>
